@@ -60,8 +60,8 @@ class BannerCard extends StatelessWidget {
             Expanded(
               flex: 5,
               child: Padding(
-                padding: const EdgeInsets.only(right: 16),
-                child: Image.network(
+                padding: const EdgeInsets.only(right: 16, top: 10, bottom: 10),
+                child: Image.asset(
                   banner.image,
                   fit: BoxFit.contain,
                 ),
