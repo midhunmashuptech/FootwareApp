@@ -6,6 +6,7 @@ class FootwareModel {
   final String image;
   final RatingModel rating;
   final double price;
+  final String category;
 
   FootwareModel({
     required this.title,
@@ -13,5 +14,6 @@ class FootwareModel {
     required this.image,
     required this.rating,
     required this.price,
+    required this.category,
   });
 }

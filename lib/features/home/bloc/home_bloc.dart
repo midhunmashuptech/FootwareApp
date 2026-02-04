@@ -52,6 +52,7 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
           "https://png.pngtree.com/png-clipart/20240901/original/pngtree-sports-shoes-png-image_15910407.png",
       rating: RatingModel(rating: 4.0, reviews: "7K+"),
       price: 2500,
+      category: "Running"
     ),
     FootwareModel(
       title: "RX - Swiss Training Shoe | Yellow and Black",
@@ -60,6 +61,7 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
           "https://png.pngtree.com/png-vector/20250624/ourmid/pngtree-a-high-quality-sports-shoes-png-image_16585846.png",
       rating: RatingModel(rating: 3.5, reviews: "12K+"),
       price: 3000,
+      category: "Running"
     ),
   ];
 
