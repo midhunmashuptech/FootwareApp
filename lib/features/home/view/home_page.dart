@@ -192,30 +192,39 @@ class _HomePageState extends State<HomePage> {
                                   itemBuilder: (context, index) {
                                     final item = state.categories[index];
 
-                                    return Column(
-                                      children: [
-                                        Container(
-                                          width: 64,
-                                          height: 64,
-                                          decoration: const BoxDecoration(
-                                            shape: BoxShape.circle,
-                                            color: Color(0xFFF1F1F1),
+                                    return GestureDetector(
+                                      onTap: () {
+                                        Navigator.pushNamed(
+                                          context,
+                                          Routes.categoryBasedApparels,
+                                          arguments: item
+                                        );
+                                      },
+                                      child: Column(
+                                        children: [
+                                          Container(
+                                            width: 64,
+                                            height: 64,
+                                            decoration: const BoxDecoration(
+                                              shape: BoxShape.circle,
+                                              color: Color(0xFFF1F1F1),
+                                            ),
+                                            child: Icon(
+                                              Icons.sports_soccer_rounded,
+                                              size: 28,
+                                              color: Colors.black,
+                                            ),
                                           ),
-                                          child: Icon(
-                                            Icons.sports_soccer_rounded,
-                                            size: 28,
-                                            color: Colors.black,
+                                          const SizedBox(height: 8),
+                                          Text(
+                                            item,
+                                            style: const TextStyle(
+                                              fontSize: 14,
+                                              fontWeight: FontWeight.w500,
+                                            ),
                                           ),
-                                        ),
-                                        const SizedBox(height: 8),
-                                        Text(
-                                          item,
-                                          style: const TextStyle(
-                                            fontSize: 14,
-                                            fontWeight: FontWeight.w500,
-                                          ),
-                                        ),
-                                      ],
+                                        ],
+                                      ),
                                     );
                                   },
                                 ),
