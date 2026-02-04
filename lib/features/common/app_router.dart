@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:footware_app/features/catergory_based_products/view/category_based_apparel.dart';
 import 'package:footware_app/features/common/routes.dart';
 import 'package:footware_app/features/profile/view/notifications.dart';
 import 'package:footware_app/features/profile_options/cubit/edit_profile_cubit.dart';
@@ -27,9 +28,15 @@ class AppRouter {
 
       case Routes.wishlist:
         return MaterialPageRoute(builder: (_) => WishlistScreen());
-        
+
       case Routes.notifications:
         return MaterialPageRoute(builder: (_) => Notifications());
+
+      case Routes.categoryBasedApparels:
+        final String category = settings.arguments as String;
+        return MaterialPageRoute(
+          builder: (_) => CategoryBasedApparel(category: category),
+        );
 
       default:
         return MaterialPageRoute(

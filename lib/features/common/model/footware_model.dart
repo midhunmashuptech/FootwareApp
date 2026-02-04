@@ -7,6 +7,7 @@ class FootwareModel {
   final RatingModel rating;
   final double price;
   final String category;
+  final String? isLiked;
 
   FootwareModel({
     required this.title,
@@ -15,5 +16,6 @@ class FootwareModel {
     required this.rating,
     required this.price,
     required this.category,
+    this.isLiked, 
   });
 }
