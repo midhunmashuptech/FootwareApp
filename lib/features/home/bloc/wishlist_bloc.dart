@@ -3,11 +3,7 @@ import 'package:footware_app/features/common/model/footware_model.dart';
 import 'package:footware_app/features/common/model/rating_model.dart';
 import 'wishlist_event.dart';
 import 'wishlist_state.dart';
-import '../model/banner_item.dart';
-import 'package:flutter/material.dart';
 
-/// BLoC handles business logic
-/// It listens to events and emits states
 class WishlistBloc extends Bloc<WishlistEvent, WishlistState> {
   WishlistBloc() : super(WishlistInitial()) {
     on<LoadWishlist>(_loadWishList);

@@ -1,6 +1,5 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:footware_app/features/common/model/footware_model.dart';
-import '../model/banner_item.dart';
 
 class CategoryCubit extends Cubit<List<FootwareModel>> {
   final List<FootwareModel> _allItems;
