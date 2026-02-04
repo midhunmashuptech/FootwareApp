@@ -5,4 +5,5 @@ class Routes {
   static const String orders = "/orders";
   static const String profile = "/profile";
   static const String editProfile = "/editProfile";
+  static const String wishlist = "/wishlist";
 }

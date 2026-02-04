@@ -3,14 +3,20 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:footware_app/features/common/app_colors.dart';
 import 'package:footware_app/features/common/app_router.dart';
 import 'package:footware_app/features/common/routes.dart';
+import 'package:footware_app/features/home/bloc/home_bloc.dart';
+import 'package:footware_app/features/home/bloc/wishlist_bloc.dart';
 import 'package:footware_app/features/home/cubit/bottom_nav_cubit.dart';
 import 'package:footware_app/features/profile/cubit/dark_mode_cubit.dart';
 
 void main() {
   runApp(
     MultiBlocProvider(
-      providers: [BlocProvider(create: (_) => DarkModeCubit()),
-      BlocProvider(create: (_) => BottomNavCubit())],
+      providers: [
+        BlocProvider(create: (_) => BottomNavCubit()),
+        BlocProvider(create: (_) => DarkModeCubit()),
+        BlocProvider(create: (_) => HomeBloc()),
+        BlocProvider(create: (_) => WishlistBloc()),
+      ],
       child: const MyApp(),
     ),
   );
@@ -21,20 +27,20 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-     return BlocBuilder<DarkModeCubit, bool>(
+    return BlocBuilder<DarkModeCubit, bool>(
       builder: (context, isDarkMode) {
-    return MaterialApp(
-      title: 'Footware App',
-      initialRoute: Routes.bottomNavigation,
-      onGenerateRoute: AppRouter.generateRoutes,
-      debugShowCheckedModeBanner: false,
-      theme: lightTheme,
-      darkTheme: darkTheme,
-      themeMode: isDarkMode ? ThemeMode.dark : ThemeMode.light,
+        return MaterialApp(
+          title: 'Footware App',
+          initialRoute: Routes.bottomNavigation,
+          onGenerateRoute: AppRouter.generateRoutes,
+          debugShowCheckedModeBanner: false,
+          theme: lightTheme,
+          darkTheme: darkTheme,
+          themeMode: isDarkMode ? ThemeMode.dark : ThemeMode.light,
+        );
+      },
     );
-   }
-  );
- }
+  }
 }
 
 final lightTheme = ThemeData(

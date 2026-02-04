@@ -5,6 +5,7 @@ import 'package:footware_app/features/profile_options/cubit/edit_profile_cubit.d
 import 'package:footware_app/features/profile_options/view/edit_profile_screen.dart';
 import 'package:footware_app/features/home/view/bottom_navigation.dart';
 import 'package:footware_app/features/home/view/home_page.dart';
+import 'package:footware_app/features/home/view/wishlist_screen.dart';
 
 class AppRouter {
   static Route<dynamic> generateRoutes(RouteSettings settings) {
@@ -22,6 +23,9 @@ class AppRouter {
 
       case Routes.home:
         return MaterialPageRoute(builder: (_) => HomePage());
+
+      case Routes.wishlist:
+        return MaterialPageRoute(builder: (_) => WishlistScreen());
 
       default:
         return MaterialPageRoute(
