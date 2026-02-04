@@ -44,23 +44,95 @@ class MyApp extends StatelessWidget {
 }
 
 final lightTheme = ThemeData(
-  brightness: Brightness.light,
-  scaffoldBackgroundColor: Colors.white,
-  primaryColor: AppColors.primaryRed,
-  listTileTheme: const ListTileThemeData(
-    iconColor: Colors.black87,
-    textColor: Colors.black87,
+  useMaterial3: true,
+  colorScheme: const ColorScheme(
+    brightness: Brightness.light,
+    primary: Colors.black,
+    onPrimary: Colors.white,
+    secondary: Colors.grey,
+    onSecondary: Colors.black,
+    error: Colors.red,
+    onError: Colors.white,
+    surface: Colors.white,
+    onSurface: Colors.black,
   ),
-  dividerColor: Colors.black12,
+  scaffoldBackgroundColor: Colors.white,
+  
+  // 👇 Add these to override the purple
+  inputDecorationTheme: InputDecorationTheme(
+    focusedBorder: OutlineInputBorder(
+      borderSide: const BorderSide(color: Colors.black, width: 2),
+      borderRadius: BorderRadius.circular(8),
+    ),
+    enabledBorder: OutlineInputBorder(
+      borderSide: const BorderSide(color: Colors.grey, width: 1),
+      borderRadius: BorderRadius.circular(8),
+    ),
+  ),
+  
+  appBarTheme: const AppBarTheme(
+    backgroundColor: Colors.white,
+    foregroundColor: Colors.black,
+    iconTheme: IconThemeData(color: Colors.black),
+  ),
+  
+  textSelectionTheme: const TextSelectionThemeData(
+    cursorColor: Colors.black,
+    selectionColor: Colors.grey,
+    selectionHandleColor: Colors.black,
+  ),
+  
+  elevatedButtonTheme: ElevatedButtonThemeData(
+    style: ElevatedButton.styleFrom(
+      backgroundColor: Colors.black,
+      foregroundColor: Colors.white,
+    ),
+  ),
 );
 
 final darkTheme = ThemeData(
-  brightness: Brightness.dark,
-  scaffoldBackgroundColor: Color.fromARGB(255, 54, 54, 54),
-  primaryColor: AppColors.primaryRed,
-  listTileTheme: const ListTileThemeData(
-    iconColor: Colors.white,
-    textColor: Colors.white,
+  useMaterial3: true,
+  colorScheme: const ColorScheme(
+    brightness: Brightness.dark,
+    primary: Colors.white,
+    onPrimary: Colors.black,
+    secondary: Colors.grey,
+    onSecondary: Colors.white,
+    error: Colors.red,
+    onError: Colors.white,
+    surface: Color(0xFF363636),
+    onSurface: Colors.white,
   ),
-  dividerColor: Colors.white24,
+  scaffoldBackgroundColor: const Color(0xFF363636),
+  
+  // 👇 Dark theme overrides
+  inputDecorationTheme: InputDecorationTheme(
+    focusedBorder: OutlineInputBorder(
+      borderSide: const BorderSide(color: Colors.white, width: 2),
+      borderRadius: BorderRadius.circular(8),
+    ),
+    enabledBorder: OutlineInputBorder(
+      borderSide: const BorderSide(color: Colors.grey, width: 1),
+      borderRadius: BorderRadius.circular(8),
+    ),
+  ),
+  
+  appBarTheme: const AppBarTheme(
+    backgroundColor: Color(0xFF363636),
+    foregroundColor: Colors.white,
+    iconTheme: IconThemeData(color: Colors.white),
+  ),
+  
+  textSelectionTheme: const TextSelectionThemeData(
+    cursorColor: Colors.white,
+    selectionColor: Colors.grey,
+    selectionHandleColor: Colors.white,
+  ),
+  
+  elevatedButtonTheme: ElevatedButtonThemeData(
+    style: ElevatedButton.styleFrom(
+      backgroundColor: Colors.white,
+      foregroundColor: Colors.black,
+    ),
+  ),
 );
