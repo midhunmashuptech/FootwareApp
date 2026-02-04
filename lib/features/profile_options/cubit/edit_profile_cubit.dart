@@ -25,9 +25,9 @@ class EditProfileCubit extends Cubit<EditProfileState> {
     email: "steveharrington@email.com",
     location: "Hawkins",
     dob: "12/08/1984",
-    gender: "Male",
-    size: "8",
-    brand: "nike",
+    gender: "",
+    size: "",
+    brand: "",
   ));
 }
 

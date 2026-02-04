@@ -17,7 +17,7 @@ class WishlistBloc extends Bloc<WishlistEvent, WishlistState> {
       title: "RX - Swiss Training Shoe | Orange and White",
       description: "description",
       image:
-          "https://png.pngtree.com/png-clipart/20240901/original/pngtree-sports-shoes-png-image_15910407.png",
+          "https://static.vecteezy.com/system/resources/thumbnails/046/323/369/small_2x/pair-of-stylish-green-and-gray-running-shoes-for-athletics-png.png",
       rating: RatingModel(rating: 4.0, reviews: "7K+"),
       price: 2500,
       category: "Running",
@@ -26,7 +26,7 @@ class WishlistBloc extends Bloc<WishlistEvent, WishlistState> {
       title: "RX - Swiss Training Shoe | Yellow and Black",
       description: "description",
       image:
-          "https://png.pngtree.com/png-vector/20250624/ourmid/pngtree-a-high-quality-sports-shoes-png-image_16585846.png",
+          "https://static.vecteezy.com/system/resources/previews/046/407/753/non_2x/unique-and-aesthetically-colorful-details-of-the-upper-mesh-yellow-premium-running-sports-shoes-sneakers-isolated-on-a-transparent-background-png.png",
       rating: RatingModel(rating: 3.5, reviews: "12K+"),
       price: 3000,
       category: "Sports",
