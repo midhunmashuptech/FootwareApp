@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:footware_app/features/common/app_colors.dart';
+import 'package:footware_app/features/common/routes.dart';
 import 'package:footware_app/features/common/widget/footwear_card.dart';
 import 'package:footware_app/features/home/model/banner_item.dart';
 import 'package:footware_app/features/home/widget/banner_card.dart';
@@ -20,28 +21,28 @@ class _HomePageState extends State<HomePage> {
       subtitle: "Today's Offer",
       description: "Get discount for every order,\non valid for today",
       image: 'assets/images/shoe1.png',
-      color: AppColors.offerRed,
+      color: AppColors.offerRed, category: 'casual',
     ),
     BannerItem(
       title: "30%",
       subtitle: "Mega Sale",
       description: "Limited time offer on\nsports footwear",
       image: 'assets/images/shoe2.png',
-      color: AppColors.offerBrown,
+      color: AppColors.offerBrown, category: 'casual',
     ),
     BannerItem(
       title: "30%",
       subtitle: "Mega Sale",
       description: "Limited time offer on\nsports footwear",
       image: 'assets/images/shoe3.png',
-      color: AppColors.offerTeal,
+      color: AppColors.offerTeal, category: 'casual',
     ),
     BannerItem(
       title: "30%",
       subtitle: "Mega Sale",
       description: "Limited time offer on\nsports footwear",
       image: 'assets/images/shoe4.png',
-      color: AppColors.offerBlue,
+      color: AppColors.offerBlue, category: 'running',
     ),
   ];
 
@@ -52,6 +53,22 @@ class _HomePageState extends State<HomePage> {
         child: SafeArea(
           child: Column(
             children: [
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Text("Steve"),
+                  Row(
+                    children: [
+                      IconButton(
+                        onPressed: () {
+                          Navigator.of(context, rootNavigator: true).pushNamed(Routes.wishlist);
+                        },
+                        icon: Icon(Icons.favorite_border),
+                      ),
+                    ],
+                  ),
+                ],
+              ),
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 20.0),
                 child: Row(
