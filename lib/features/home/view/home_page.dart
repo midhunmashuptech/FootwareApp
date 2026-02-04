@@ -33,25 +33,65 @@ class _HomePageState extends State<HomePage> {
             children: [
               Padding(
                 padding: const EdgeInsets.symmetric(
-                                  horizontal: 20.0,
-                                ),
+                  horizontal: 16,
+                  vertical: 12,
+                ),
                 child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    Text("Steve"),
+                    // Profile Image
+                    const CircleAvatar(
+                      radius: 26,
+                      backgroundImage: NetworkImage(
+                        'https://i.imgur.com/BoN9kdC.png', // replace with your image
+                      ),
+                    ),
+
+                    const SizedBox(width: 12),
+
+                    // Greeting Text
+                    Expanded(
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: const [
+                          Text(
+                            'Good Morning',
+                            style: TextStyle(fontSize: 14, color: Colors.grey),
+                          ),
+                          SizedBox(height: 2),
+                          Text(
+                            'Steve Harrington',
+                            style: TextStyle(
+                              fontSize: 18,
+                              fontWeight: FontWeight.w600,
+                              color: Colors.black,
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+
+                    // Icons
                     Row(
                       children: [
                         IconButton(
+                          icon: const Icon(Icons.favorite_border),
                           onPressed: () {
-                            Navigator.of(context, rootNavigator: true).pushNamed(Routes.wishlist);
+                            Navigator.of(
+                              context,
+                              rootNavigator: true,
+                            ).pushNamed(Routes.wishlist);
                           },
-                          icon: Icon(Icons.favorite_border),
+                        ),
+                        IconButton(
+                          icon: const Icon(Icons.notifications_none_rounded),
+                          onPressed: () {},
                         ),
                       ],
                     ),
                   ],
                 ),
               ),
+
               BlocBuilder<HomeBloc, HomeState>(
                 builder: (context, state) {
                   if (state is HomeLoading) {
