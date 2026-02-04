@@ -14,22 +14,24 @@ class BottomNavigation extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: BlocBuilder<BottomNavCubit, int>(
-        builder: (context, index) {
-          // YOU already have pages — just map index
-          switch (index) {
-            case 0:
-              return HomePage();
-            case 1:
-              return CartPage();
-            case 2:
-              return OrdersPage();
-            case 3:
-              return ProfilePage();
-            default:
-              return OrdersPage();
-          }
-        },
+      body: SafeArea(
+        child: BlocBuilder<BottomNavCubit, int>(
+          builder: (context, index) {
+            // YOU already have pages — just map index
+            switch (index) {
+              case 0:
+                return HomePage();
+              case 1:
+                return CartPage();
+              case 2:
+                return OrdersPage();
+              case 3:
+                return ProfilePage();
+              default:
+                return OrdersPage();
+            }
+          },
+        ),
       ),
       bottomNavigationBar: const CustomBottomNav(),
     );

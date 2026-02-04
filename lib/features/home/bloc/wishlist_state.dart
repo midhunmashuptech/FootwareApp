@@ -1,5 +1,4 @@
 import 'package:footware_app/features/common/model/footware_model.dart';
-import 'package:footware_app/features/home/model/banner_item.dart';
 
 abstract class WishlistState {}
 

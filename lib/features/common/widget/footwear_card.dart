@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:footware_app/features/common/routes.dart';
 
 class FootwearCard extends StatelessWidget {
   final String imageUrl;

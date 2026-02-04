@@ -31,27 +31,69 @@ class _HomePageState extends State<HomePage> {
         child: SafeArea(
           child: Column(
             children: [
+              SizedBox(height: 15),
               Padding(
                 padding: const EdgeInsets.symmetric(
-                                  horizontal: 20.0,
-                                ),
+                  horizontal: 16,
+                  vertical: 5,
+                ),
                 child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    Text("Steve"),
+                    // Profile Image
+                    const CircleAvatar(
+                      radius: 24,
+                      backgroundImage: NetworkImage(
+                        'https://upload.wikimedia.org/wikipedia/en/8/8b/ST3_Steve_Harrington_portrait.jpg',
+                      ),
+                    ),
+
+                    const SizedBox(width: 12),
+
+                    // Greeting Text
+                    Expanded(
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: const [
+                          Text(
+                            'Good Morning',
+                            style: TextStyle(fontSize: 14, color: Colors.grey),
+                          ),
+                          SizedBox(height: 2),
+                          Text(
+                            'Steve Harrington',
+                            style: TextStyle(
+                              fontSize: 18,
+                              fontWeight: FontWeight.w600,
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+
+                    // Icons
                     Row(
                       children: [
                         IconButton(
+                          icon: const Icon(Icons.favorite_border),
                           onPressed: () {
-                            Navigator.of(context, rootNavigator: true).pushNamed(Routes.wishlist);
+                            Navigator.of(
+                              context,
+                              rootNavigator: true,
+                            ).pushNamed(Routes.wishlist);
                           },
-                          icon: Icon(Icons.favorite_border),
+                        ),
+                        IconButton(
+                          icon: const Icon(Icons.notifications_none_rounded),
+                          onPressed: () {
+                            Navigator.pushNamed(context, Routes.notifications);
+                          },
                         ),
                       ],
                     ),
                   ],
                 ),
               ),
+
               BlocBuilder<HomeBloc, HomeState>(
                 builder: (context, state) {
                   if (state is HomeLoading) {
@@ -94,7 +136,7 @@ class _HomePageState extends State<HomePage> {
                                   ],
                                 ),
                               ),
-                              SizedBox(height: 15),
+                              SizedBox(height: 5),
                               SizedBox(
                                 height: 190,
                                 child: PageView.builder(
@@ -133,6 +175,60 @@ class _HomePageState extends State<HomePage> {
                                   ),
                                 ),
                               ),
+
+                              const SizedBox(height: 20),
+
+                              // Category Cards
+                              SizedBox(
+                                height: 100,
+                                child: ListView.separated(
+                                  scrollDirection: Axis.horizontal,
+                                  padding: const EdgeInsets.symmetric(
+                                    horizontal: 16,
+                                  ),
+                                  itemCount: state.categories.length,
+                                  separatorBuilder: (_, __) =>
+                                      const SizedBox(width: 20),
+                                  itemBuilder: (context, index) {
+                                    final item = state.categories[index];
+
+                                    return GestureDetector(
+                                      onTap: () {
+                                        Navigator.pushNamed(
+                                          context,
+                                          Routes.categoryBasedApparels,
+                                          arguments: item
+                                        );
+                                      },
+                                      child: Column(
+                                        children: [
+                                          Container(
+                                            width: 64,
+                                            height: 64,
+                                            decoration: const BoxDecoration(
+                                              shape: BoxShape.circle,
+                                              color: Color(0xFFF1F1F1),
+                                            ),
+                                            child: Icon(
+                                              Icons.sports_soccer_rounded,
+                                              size: 28,
+                                              color: Colors.black,
+                                            ),
+                                          ),
+                                          const SizedBox(height: 8),
+                                          Text(
+                                            item,
+                                            style: const TextStyle(
+                                              fontSize: 14,
+                                              fontWeight: FontWeight.w500,
+                                            ),
+                                          ),
+                                        ],
+                                      ),
+                                    );
+                                  },
+                                ),
+                              ),
                             ],
                           );
                   }
@@ -162,13 +258,12 @@ class _HomePageState extends State<HomePage> {
                   ],
                 ),
               ),
-              SizedBox(height: 15),
               BlocBuilder<HomeBloc, HomeState>(
                 builder: (context, state) {
                   if (state is HomeLoading) {
                     return Center(
                       child: Padding(
-                        padding: const EdgeInsets.symmetric(vertical: 10.0),
+                        padding: const EdgeInsets.symmetric(vertical: 5.0),
                         child: CircularProgressIndicator(),
                       ),
                     );

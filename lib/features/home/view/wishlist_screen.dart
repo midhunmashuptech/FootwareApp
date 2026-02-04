@@ -5,7 +5,6 @@ import 'package:footware_app/features/home/bloc/wishlist_bloc.dart';
 import 'package:footware_app/features/home/bloc/wishlist_event.dart';
 import 'package:footware_app/features/home/bloc/wishlist_state.dart';
 import 'package:footware_app/features/home/cubit/category_cubit.dart';
-import 'package:footware_app/features/home/model/banner_item.dart';
 import 'package:footware_app/features/home/widget/category_card.dart';
 import 'package:footware_app/features/common/widget/footwear_card.dart';
 
@@ -24,7 +23,7 @@ class _WishlistScreenState extends State<WishlistScreen> {
     return BlocProvider(
       create: (_) => WishlistBloc()..add(LoadWishlist()),
       child: Scaffold(
-        appBar: AppBar(title: const Text("Wishlist"), centerTitle: true),
+        appBar: AppBar(title: const Text("Wishlist")),
         body: BlocBuilder<WishlistBloc, WishlistState>(
           builder: (context, state) {
             if (state is WishlistLoaded) {
@@ -35,7 +34,7 @@ class _WishlistScreenState extends State<WishlistScreen> {
                     return Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        ShoeCategoryList(
+                        CategoryCard(
                           categories: state.categories,
                           selectedCategory: selectedCategory,
                           onTap: (category) {

@@ -90,7 +90,16 @@ class _ProfilePageState extends State<ProfilePage> {
                             context,
                           ).pushNamed(Routes.savedAddress);
                         },),
-                      buildTile(Icons.notifications_none, "Notification"),
+                      buildTile(
+                        Icons.notifications_none,
+                        "Notification",
+                        onTap: () {
+                          Navigator.of(
+                            context,
+                            rootNavigator: true,
+                          ).pushNamed(Routes.notifications);
+                        },
+                      ),
                       buildTile(
                         Icons.language,
                         "Language",
@@ -124,7 +133,6 @@ class _ProfilePageState extends State<ProfilePage> {
               ],
             ),
           ),
-    
         );
       },
     );
@@ -172,4 +180,3 @@ class _ProfilePageState extends State<ProfilePage> {
     );
   }
 }
-

@@ -13,6 +13,8 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
     on<FetchHomeData>(_fetchHomeData);
   }
 
+  List<String> categories = ["Running", "Sports", "Casual", "Outdoor", "Boots", "Dance"];
+
   final List<BannerItem> bannerItems = [
     BannerItem(
       title: "25%",
@@ -81,6 +83,6 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
     emit(HomeLoading());
     await Future.delayed(Duration(seconds: 3));
 
-    emit(HomeLoaded(bannerItems, popularItems));
+    emit(HomeLoaded(bannerItems, categories, popularItems));
   }
 }
