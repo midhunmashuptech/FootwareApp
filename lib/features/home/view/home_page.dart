@@ -31,18 +31,19 @@ class _HomePageState extends State<HomePage> {
         child: SafeArea(
           child: Column(
             children: [
+              SizedBox(height: 15),
               Padding(
                 padding: const EdgeInsets.symmetric(
                   horizontal: 16,
-                  vertical: 12,
+                  vertical: 5,
                 ),
                 child: Row(
                   children: [
                     // Profile Image
                     const CircleAvatar(
-                      radius: 26,
+                      radius: 24,
                       backgroundImage: NetworkImage(
-                        'https://i.imgur.com/BoN9kdC.png', // replace with your image
+                        'https://upload.wikimedia.org/wikipedia/en/8/8b/ST3_Steve_Harrington_portrait.jpg',
                       ),
                     ),
 
@@ -63,7 +64,6 @@ class _HomePageState extends State<HomePage> {
                             style: TextStyle(
                               fontSize: 18,
                               fontWeight: FontWeight.w600,
-                              color: Colors.black,
                             ),
                           ),
                         ],
@@ -84,7 +84,9 @@ class _HomePageState extends State<HomePage> {
                         ),
                         IconButton(
                           icon: const Icon(Icons.notifications_none_rounded),
-                          onPressed: () {},
+                          onPressed: () {
+                            Navigator.pushNamed(context, Routes.notifications);
+                          },
                         ),
                       ],
                     ),
@@ -134,7 +136,7 @@ class _HomePageState extends State<HomePage> {
                                   ],
                                 ),
                               ),
-                              SizedBox(height: 15),
+                              SizedBox(height: 5),
                               SizedBox(
                                 height: 190,
                                 child: PageView.builder(
@@ -173,6 +175,51 @@ class _HomePageState extends State<HomePage> {
                                   ),
                                 ),
                               ),
+
+                              const SizedBox(height: 20),
+
+                              // Category Cards
+                              SizedBox(
+                                height: 100,
+                                child: ListView.separated(
+                                  scrollDirection: Axis.horizontal,
+                                  padding: const EdgeInsets.symmetric(
+                                    horizontal: 16,
+                                  ),
+                                  itemCount: state.categories.length,
+                                  separatorBuilder: (_, __) =>
+                                      const SizedBox(width: 20),
+                                  itemBuilder: (context, index) {
+                                    final item = state.categories[index];
+
+                                    return Column(
+                                      children: [
+                                        Container(
+                                          width: 64,
+                                          height: 64,
+                                          decoration: const BoxDecoration(
+                                            shape: BoxShape.circle,
+                                            color: Color(0xFFF1F1F1),
+                                          ),
+                                          child: Icon(
+                                            Icons.sports_soccer_rounded,
+                                            size: 28,
+                                            color: Colors.black,
+                                          ),
+                                        ),
+                                        const SizedBox(height: 8),
+                                        Text(
+                                          item,
+                                          style: const TextStyle(
+                                            fontSize: 14,
+                                            fontWeight: FontWeight.w500,
+                                          ),
+                                        ),
+                                      ],
+                                    );
+                                  },
+                                ),
+                              ),
                             ],
                           );
                   }
@@ -202,13 +249,12 @@ class _HomePageState extends State<HomePage> {
                   ],
                 ),
               ),
-              SizedBox(height: 15),
               BlocBuilder<HomeBloc, HomeState>(
                 builder: (context, state) {
                   if (state is HomeLoading) {
                     return Center(
                       child: Padding(
-                        padding: const EdgeInsets.symmetric(vertical: 10.0),
+                        padding: const EdgeInsets.symmetric(vertical: 5.0),
                         child: CircularProgressIndicator(),
                       ),
                     );
