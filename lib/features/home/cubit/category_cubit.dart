@@ -1,17 +1,20 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:footware_app/features/common/model/footware_model.dart';
 import '../model/banner_item.dart';
 
-class CategoryCubit extends Cubit<List<BannerItem>> {
-  final List<BannerItem> allItems;
+class CategoryCubit extends Cubit<List<FootwareModel>> {
+  final List<FootwareModel> _allItems;
 
-  CategoryCubit(this.allItems) : super(allItems);
+  CategoryCubit(this._allItems) : super(_allItems);
 
   void selectCategory(String category) {
     if (category == "All") {
-      emit(allItems);
+      emit(_allItems);
     } else {
       emit(
-        allItems.where((item) => item.category == category).toList(),
+        _allItems
+            .where((item) => item.category == category)
+            .toList(),
       );
     }
   }

@@ -18,6 +18,7 @@
 // }
 
 
+import 'package:footware_app/features/common/model/footware_model.dart';
 import 'package:footware_app/features/home/model/banner_item.dart';
 
 abstract class WishlistEvent {}
@@ -27,6 +28,6 @@ class LoadWishlist extends WishlistEvent {}
 
 // Remove from wishlist
 class RemoveFromWishlist extends WishlistEvent {
-  final BannerItem item;
+  final FootwareModel item;
   RemoveFromWishlist(this.item);
 }

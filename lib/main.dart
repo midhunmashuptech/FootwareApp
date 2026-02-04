@@ -4,6 +4,7 @@ import 'package:footware_app/features/common/app_colors.dart';
 import 'package:footware_app/features/common/app_router.dart';
 import 'package:footware_app/features/common/routes.dart';
 import 'package:footware_app/features/home/bloc/home_bloc.dart';
+import 'package:footware_app/features/home/bloc/wishlist_bloc.dart';
 import 'package:footware_app/features/home/cubit/bottom_nav_cubit.dart';
 import 'package:footware_app/features/profile/cubit/dark_mode_cubit.dart';
 
@@ -14,6 +15,7 @@ void main() {
         BlocProvider(create: (_) => BottomNavCubit()),
         BlocProvider(create: (_) => DarkModeCubit()),
         BlocProvider(create: (_) => HomeBloc()),
+        BlocProvider(create: (_) => WishlistBloc()),
       ],
       child: const MyApp(),
     ),

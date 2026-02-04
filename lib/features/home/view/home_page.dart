@@ -31,6 +31,27 @@ class _HomePageState extends State<HomePage> {
         child: SafeArea(
           child: Column(
             children: [
+              Padding(
+                padding: const EdgeInsets.symmetric(
+                                  horizontal: 20.0,
+                                ),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Text("Steve"),
+                    Row(
+                      children: [
+                        IconButton(
+                          onPressed: () {
+                            Navigator.of(context, rootNavigator: true).pushNamed(Routes.wishlist);
+                          },
+                          icon: Icon(Icons.favorite_border),
+                        ),
+                      ],
+                    ),
+                  ],
+                ),
+              ),
               BlocBuilder<HomeBloc, HomeState>(
                 builder: (context, state) {
                   if (state is HomeLoading) {
