@@ -84,7 +84,16 @@ class _ProfilePageState extends State<ProfilePage> {
                         },
                       ),
                       buildTile(Icons.location_on_outlined, "Address"),
-                      buildTile(Icons.notifications_none, "Notification"),
+                      buildTile(
+                        Icons.notifications_none,
+                        "Notification",
+                        onTap: () {
+                          Navigator.of(
+                            context,
+                            rootNavigator: true,
+                          ).pushNamed(Routes.notifications);
+                        },
+                      ),
                       buildTile(
                         Icons.language,
                         "Language",
@@ -118,7 +127,6 @@ class _ProfilePageState extends State<ProfilePage> {
               ],
             ),
           ),
-    
         );
       },
     );
@@ -166,4 +174,3 @@ class _ProfilePageState extends State<ProfilePage> {
     );
   }
 }
-
