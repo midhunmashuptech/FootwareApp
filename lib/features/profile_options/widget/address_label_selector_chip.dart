@@ -2,12 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:footware_app/features/profile_options/cubit/add_address_state.dart';
 import 'package:footware_app/features/profile_options/cubit/add_adrress_cubit.dart';
+import 'package:footware_app/features/profile_options/widget/add_label_bootom_modal.dart';
 
 /// 🏷 LABEL SELECTOR WITH CUBIT
 class AddressLabelSelector extends StatelessWidget {
-  final List<String> labels;
-
-  const AddressLabelSelector({super.key, required this.labels});
+  const AddressLabelSelector({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -23,7 +22,7 @@ class AddressLabelSelector extends StatelessWidget {
             return Wrap(
               spacing: 10,
               children: [
-                ...labels.map(
+                ...state.labels.map(
                   (label) => _LabelChip(
                     label: label,
                     selectedLabel: state.selectedLabel,
@@ -44,10 +43,7 @@ class _LabelChip extends StatelessWidget {
   final String label;
   final String selectedLabel;
 
-  const _LabelChip({
-    required this.label,
-    required this.selectedLabel,
-  });
+  const _LabelChip({required this.label, required this.selectedLabel});
 
   @override
   Widget build(BuildContext context) {
@@ -57,8 +53,8 @@ class _LabelChip extends StatelessWidget {
     return ChoiceChip(
       label: Text(label),
       selected: isSelected,
-      onSelected: (_) =>
-          context.read<AddressFormCubit>().selectLabel(label),
+      showCheckmark: false,
+      onSelected: (_) => context.read<AddressFormCubit>().selectLabel(label),
       selectedColor: colors.primary,
       labelStyle: TextStyle(
         color: isSelected ? colors.onPrimary : colors.onSurface,
@@ -80,7 +76,22 @@ class _AddLabelButton extends StatelessWidget {
     final colors = Theme.of(context).colorScheme;
 
     return InkWell(
-      onTap: () {},
+      onTap: () {
+        final cubit = context.read<AddressFormCubit>(); // get cubit FIRST
+
+        showModalBottomSheet(
+          context: context,
+          isScrollControlled: true,
+          shape: const RoundedRectangleBorder(
+            borderRadius: BorderRadius.vertical(top: Radius.circular(20)),
+          ),
+          builder: (_) => BlocProvider.value(
+            value: cubit, // provide SAME cubit to sheet
+            child: const AddLabelSheet(),
+          ),
+        );
+      },
+
       borderRadius: BorderRadius.circular(30),
       child: Container(
         padding: const EdgeInsets.all(10),

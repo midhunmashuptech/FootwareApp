@@ -4,11 +4,7 @@ class AddressCard extends StatelessWidget {
   final String title;
   final String address;
 
-  const AddressCard({
-    super.key,
-    required this.title,
-    required this.address,
-  });
+  const AddressCard({super.key, required this.title, required this.address});
 
   @override
   Widget build(BuildContext context) {
@@ -30,7 +26,7 @@ class AddressCard extends StatelessWidget {
         ],
       ),
       child: Row(
-        crossAxisAlignment: CrossAxisAlignment.start,
+        crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           Container(
             height: 42,
@@ -49,17 +45,64 @@ class AddressCard extends StatelessWidget {
               children: [
                 Row(
                   children: [
-                    Text(
-                      title,
-                      style: textTheme.titleSmall?.copyWith(
-                        fontWeight: FontWeight.w600,
+                    Expanded(
+                      child: Text(
+                        title,
+                        style: textTheme.titleSmall?.copyWith(
+                          fontWeight: FontWeight.w600,
+                        ),
                       ),
                     ),
-                    const SizedBox(width: 6),
-                    Icon(Icons.edit, size: 16, color: colors.onSurface),
+
+                    PopupMenuButton<String>(
+                      icon: Icon(
+                        Icons.more_vert,
+                        size: 20,
+                        color: colors.onSurface,
+                      ),
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(12),
+                      ),
+                      onSelected: (value) {
+                        if (value == 'edit') {
+                          // TODO: Edit action
+                          print("Edit tapped");
+                        } else if (value == 'delete') {
+                          // TODO: Delete action
+                          print("Delete tapped");
+                        }
+                      },
+                      itemBuilder: (context) => [
+                        const PopupMenuItem(
+                          value: 'edit',
+                          child: Row(
+                            children: [
+                              Icon(Icons.edit, size: 18),
+                              SizedBox(width: 8),
+                              Text("Edit"),
+                            ],
+                          ),
+                        ),
+                        const PopupMenuItem(
+                          value: 'delete',
+                          child: Row(
+                            children: [
+                              Icon(
+                                Icons.delete_outline,
+                                size: 18,
+                                color: Colors.red,
+                              ),
+                              SizedBox(width: 8),
+                              Text("Delete"),
+                            ],
+                          ),
+                        ),
+                      ],
+                    ),
                   ],
                 ),
-                const SizedBox(height: 4),
+
+              const SizedBox(height: 4),
                 Text(
                   address,
                   style: textTheme.bodySmall?.copyWith(
