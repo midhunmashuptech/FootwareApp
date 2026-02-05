@@ -6,6 +6,7 @@ import 'package:footware_app/features/profile_options/cubit/add_adrress_cubit.da
 import 'package:footware_app/features/profile/view/notifications.dart';
 import 'package:footware_app/features/profile_options/cubit/edit_profile_cubit.dart';
 import 'package:footware_app/features/profile_options/view/add_address.dart';
+import 'package:footware_app/features/profile_options/view/edit_address.dart';
 import 'package:footware_app/features/profile_options/view/edit_profile_screen.dart';
 import 'package:footware_app/features/home/view/bottom_navigation.dart';
 import 'package:footware_app/features/home/view/home_page.dart';
@@ -36,12 +37,7 @@ class AppRouter {
         return MaterialPageRoute(builder: (_) => SavedAddressPage());
 
       case Routes.addNewAddress:
-        return MaterialPageRoute(
-          builder:(_) => BlocProvider(
-            create: (_) =>AddressFormCubit(),
-            child: const AddNewAddressPage(),
-          ),
-          );
+        return MaterialPageRoute(builder: (_) => AddNewAddressPage());
       case Routes.notifications:
         return MaterialPageRoute(builder: (_) => Notifications());
 
@@ -50,6 +46,9 @@ class AppRouter {
         return MaterialPageRoute(
           builder: (_) => CategoryBasedApparel(category: category),
         );
+
+        case Routes.editAddress:
+        return MaterialPageRoute(builder: (_) => EditAddressPage());
 
       default:
         return MaterialPageRoute(

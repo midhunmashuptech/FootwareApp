@@ -2,21 +2,31 @@ import 'package:flutter/material.dart';
 import 'package:footware_app/features/profile_options/widget/add_adress_textfield.dart';
 import 'package:footware_app/features/profile_options/widget/address_label_selector_chip.dart';
 
-class AddNewAddressPage extends StatefulWidget {
-  const AddNewAddressPage({super.key});
+class EditAddressPage extends StatefulWidget {
+  const EditAddressPage({super.key});
 
   @override
-  State<AddNewAddressPage> createState() => _AddNewAddressPageState();
+  State<EditAddressPage> createState() => _EditAddressPageState();
 }
 
-class _AddNewAddressPageState extends State<AddNewAddressPage> {
-    final houseController = TextEditingController();
+class _EditAddressPageState extends State<EditAddressPage> {
+  final houseController = TextEditingController();
   final roadController = TextEditingController();
   final landMarkController = TextEditingController();
   final districtController = TextEditingController();
   final stateController = TextEditingController();
   final pincodeController = TextEditingController();
 
+@override
+  void initState() {
+     houseController.text = "steve House";
+      roadController.text = "1421 Maplecrest Drive";
+      landMarkController.text = "opp to dustin's house";
+      districtController.text = "Hawkins";
+      stateController.text = "Indiana";
+      pincodeController.text = "46001";
+    super.initState();
+  }
   @override
   Widget build(BuildContext context) {
 
@@ -61,7 +71,7 @@ class _AddNewAddressPageState extends State<AddNewAddressPage> {
 
             const SizedBox(height: 20),
 
-            /// ✏️ Input Fields
+            ///  Input Fields
             AddressTextField(hint: "House Name/ Apartment", controller: houseController,),
             AddressTextField(hint: "Road Name", controller: roadController,),
              AddressTextField(hint: "Land Mark (optional)", controller: landMarkController,),
@@ -78,7 +88,7 @@ class _AddNewAddressPageState extends State<AddNewAddressPage> {
 
             const SizedBox(height: 30),
 
-            /// 💾 Save Button
+            ///  Save Button
             SizedBox(
               width: double.infinity,
               height: 50,

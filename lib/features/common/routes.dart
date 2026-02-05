@@ -10,4 +10,5 @@ class Routes {
   static const String addNewAddress = "/addNewAddress";
   static const String notifications = "/notifications";
   static const String categoryBasedApparels = "/categoryBasedApparels";
+  static const String editAddress = "/editAddress";
 }

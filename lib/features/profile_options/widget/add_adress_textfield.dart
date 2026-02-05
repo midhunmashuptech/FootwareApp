@@ -3,10 +3,12 @@ import 'package:flutter/material.dart';
 class AddressTextField extends StatelessWidget {
   final String hint;
   final TextInputType keyboard;
+  final TextEditingController controller;
 
   const AddressTextField({
     super.key,
     required this.hint,
+    required this.controller,
     this.keyboard = TextInputType.text,
   });
 
@@ -15,6 +17,7 @@ class AddressTextField extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.only(bottom: 12),
       child: TextField(
+        controller: controller,
         keyboardType: keyboard,
         decoration: InputDecoration(
           hintText: hint,
