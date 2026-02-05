@@ -41,6 +41,7 @@ class AppRouter {
             create: (_) =>AddressFormCubit(),
             child: const AddNewAddressPage(),
           ),
+          );
       case Routes.notifications:
         return MaterialPageRoute(builder: (_) => Notifications());
 
