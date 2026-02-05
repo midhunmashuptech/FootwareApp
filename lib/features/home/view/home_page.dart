@@ -197,7 +197,7 @@ class _HomePageState extends State<HomePage> {
                                         Navigator.pushNamed(
                                           context,
                                           Routes.categoryBasedApparels,
-                                          arguments: item
+                                          arguments: item,
                                         );
                                       },
                                       child: Column(
@@ -249,7 +249,9 @@ class _HomePageState extends State<HomePage> {
                       ),
                     ),
                     TextButton(
-                      onPressed: () {},
+                      onPressed: () {
+                        Navigator.pushNamed(context, Routes.mostPopular);
+                      },
                       child: Text(
                         "See All",
                         style: TextStyle(color: AppColors.primaryBlack),
