@@ -163,6 +163,7 @@ class _EditProfilePageState extends State<EditProfilePage> {
                     SectionTitle(text: "Shopping Preferences"),
                     DropdownField(
                       value: state.gender,
+                      label: "Gender",
                       hint: "Select Gender",
                       items: ["Male", "Female", "Other"],
                       icon: Icons.person_outline,
@@ -170,6 +171,7 @@ class _EditProfilePageState extends State<EditProfilePage> {
                           context.read<EditProfileCubit>().changeGender(val),
                     ),
                     DropdownField(
+                      label: "Size",
                       value: state.size,
                       hint: "Shoe Size (UK)",
                       items: ["4", "5", "6", "7", "8", "9", "10", "11", "12"],

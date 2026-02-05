@@ -6,7 +6,10 @@ class Routes {
   static const String profile = "/profile";
   static const String editProfile = "/editProfile";
   static const String wishlist = "/wishlist";
+  static const String savedAddress = "/savedAddress";
+  static const String addNewAddress = "/addNewAddress";
   static const String notifications = "/notifications";
   static const String categoryBasedApparels = "/categoryBasedApparels";
   static const String mostPopular = "/mostpopular";
+  static const String editAddress = "/editAddress";
 }
