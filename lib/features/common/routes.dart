@@ -12,4 +12,5 @@ class Routes {
   static const String categoryBasedApparels = "/categoryBasedApparels";
   static const String mostPopular = "/mostpopular";
   static const String editAddress = "/editAddress";
+  static const String productDetails = "/productDetails";
 }

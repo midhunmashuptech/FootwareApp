@@ -125,7 +125,12 @@ class _HomePageState extends State<HomePage> {
                                       ),
                                     ),
                                     TextButton(
-                                      onPressed: () {},
+                                      onPressed: () {
+                                        Navigator.pushNamed(
+                                          context,
+                                          Routes.productDetails,
+                                        );
+                                      },
                                       child: Text(
                                         "See All",
                                         style: TextStyle(
