@@ -5,6 +5,7 @@ import 'package:footware_app/features/common/routes.dart';
 
 import 'package:footware_app/features/home/view/most_popular_screen.dart';
 import 'package:footware_app/features/orders/view/orders_page.dart';
+import 'package:footware_app/features/products_details/view/product_details_screen.dart';
 import 'package:footware_app/features/profile_options/cubit/add_adrress_cubit.dart';
 import 'package:footware_app/features/profile/view/notifications.dart';
 import 'package:footware_app/features/profile_options/cubit/edit_profile_cubit.dart';
@@ -41,6 +42,7 @@ class AppRouter {
 
       case Routes.addNewAddress:
         return MaterialPageRoute(builder: (_) => AddNewAddressPage());
+
       case Routes.notifications:
         return MaterialPageRoute(builder: (_) => Notifications());
 
@@ -49,14 +51,19 @@ class AppRouter {
         return MaterialPageRoute(
           builder: (_) => CategoryBasedApparel(category: category),
         );
+
       case Routes.orders:
         return MaterialPageRoute(builder: (_) => OrdersPage());
+
       case Routes.mostPopular:
         return MaterialPageRoute(builder: (_) => MostPopularScreen());
 
-        case Routes.editAddress:
+      case Routes.editAddress:
         return MaterialPageRoute(builder: (_) => EditAddressPage());
-        
+
+      case Routes.productDetails:
+        return MaterialPageRoute(builder: (_) => ProductDetailsPage());
+
       default:
         return MaterialPageRoute(
           builder: (_) => Scaffold(body: Text("Route not found!")),
