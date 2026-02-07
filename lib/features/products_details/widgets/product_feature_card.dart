@@ -25,16 +25,17 @@ class ProductFeatureCard extends StatelessWidget {
         child: Row(
           mainAxisSize: MainAxisSize.min,
           children: [
-            Icon(icon, color: iconColor, size: 20),
+            //Icon
+            Icon(icon, color: iconColor, size: 26),
 
             const SizedBox(width: 12),
 
-            // VERTICAL DIVIDER
+            // Divider
             VerticalDivider(width: 20, thickness: 1, color: AppColors.darkGrey),
 
             const SizedBox(width: 12),
 
-            // TEXT SECTION
+            // Text
             Text(
               text,
               style: const TextStyle(fontSize: 13, fontWeight: FontWeight.w500),
