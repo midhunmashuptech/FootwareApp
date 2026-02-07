@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:footware_app/features/common/app_colors.dart';
 
 class StarRating extends StatelessWidget {
   final double rating;
@@ -16,7 +17,7 @@ class StarRating extends StatelessWidget {
       children: List.generate(5, (index) {
         return Icon(
           index < rating.floor() ? Icons.star : Icons.star_border,
-          color: Colors.amber,
+          color: AppColors.ratingOrange,
           size: size,
         );
       }),

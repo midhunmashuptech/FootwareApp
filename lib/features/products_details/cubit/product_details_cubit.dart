@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:footware_app/features/common/app_colors.dart';
 import 'package:footware_app/features/common/model/footware_model.dart';
 import 'package:footware_app/features/common/model/rating_model.dart';
 import 'product_details_state.dart';
@@ -15,17 +16,17 @@ class ProductDetailsCubit extends Cubit<ProductDetailsState> {
         features: const [
           {
             'icon': Icons.trending_up,
-            'color': Colors.blue,
+            'color': AppColors.lightBlue,
             'text': 'Casual and trendy',
           },
           {
             'icon': Icons.sentiment_satisfied_alt,
-            'color': Colors.green,
+            'color': AppColors.darkGreen,
             'text': '1000+ customers',
           },
           {
             'icon': Icons.directions_walk,
-            'color': Colors.orange,
+            'color': AppColors.ratingOrange,
             'text': 'Secure Lace up Closure',
           },
         ],

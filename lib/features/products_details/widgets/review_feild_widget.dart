@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:footware_app/features/common/app_colors.dart';
 import 'package:footware_app/features/products_details/cubit/review_cubit.dart';
 import 'package:footware_app/features/products_details/cubit/review_state.dart';
-import 'package:footware_app/features/products_details/widgets/star_ratingsdart';
+import 'package:footware_app/features/products_details/widgets/star_ratings.dart';
 
 class ReviewFeildWidget extends StatelessWidget {
   final double rating;
@@ -32,7 +33,7 @@ class ReviewFeildWidget extends StatelessWidget {
                     "$reviews Reviews",
                     style: const TextStyle(
                       fontSize: 14,
-                      color: Colors.black54,
+                      color: AppColors.primaryBlack,
                     ),
                   ),
                   const SizedBox(width: 10),
@@ -67,7 +68,7 @@ class ReviewFeildWidget extends StatelessWidget {
                           ? Icons.star
                           : Icons.star_border,
                       size: 28,
-                      color: Colors.amber,
+                      color: AppColors.ratingOrange,
                     ),
                   );
                 }),
@@ -96,8 +97,8 @@ class ReviewFeildWidget extends StatelessWidget {
                 child: ElevatedButton(
                   style: ElevatedButton.styleFrom(
                     backgroundColor: formState.submitted
-                        ? Colors.green
-                        : Colors.black,
+                        ? AppColors.darkGreen
+                        : AppColors.primaryBlack,
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(12),
                     ),
@@ -123,7 +124,7 @@ class ReviewFeildWidget extends StatelessWidget {
                         : "Submit",
                     style: const TextStyle(
                       fontSize: 16,
-                      color: Colors.white,
+                      color: AppColors.primaryWhite,
                     ),
                   ),
                 ),
