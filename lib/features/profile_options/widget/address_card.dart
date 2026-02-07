@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:footware_app/features/common/routes.dart';
 
 class AddressCard extends StatelessWidget {
   final String title;
@@ -65,8 +66,7 @@ class AddressCard extends StatelessWidget {
                       ),
                       onSelected: (value) {
                         if (value == 'edit') {
-                          // TODO: Edit action
-                          print("Edit tapped");
+                           Navigator.of(context).pushNamed(Routes.editAddress);
                         } else if (value == 'delete') {
                           // TODO: Delete action
                           print("Delete tapped");
