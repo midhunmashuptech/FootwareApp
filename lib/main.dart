@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:footware_app/features/cart/bloc/cart_bloc.dart';
 import 'package:footware_app/features/common/app_router.dart';
 import 'package:footware_app/features/common/routes.dart';
 import 'package:footware_app/features/home/bloc/home_bloc.dart';
@@ -17,6 +18,7 @@ void main() {
         BlocProvider(create: (_) => HomeBloc()),
         BlocProvider(create: (_) => WishlistBloc()),
         BlocProvider(create: (_) => AddressFormCubit()),
+        BlocProvider(create: (_) => CartBloc()),
       ],
       child: const MyApp(),
     ),

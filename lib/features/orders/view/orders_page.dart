@@ -25,7 +25,7 @@ class OrdersPage extends StatelessWidget {
               ],
             ),
             centerTitle: true,
-            bottom: const TabBar(
+            bottom:  TabBar(
               indicatorColor: AppColors.primaryRed,
               labelColor: AppColors.primaryRed,
               unselectedLabelColor: AppColors.primaryBlack,

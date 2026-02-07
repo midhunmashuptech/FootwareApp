@@ -1,6 +1,7 @@
 import 'package:footware_app/features/common/model/rating_model.dart';
 
 class FootwareModel {
+  final String? id;
   final String title;
   final String description;
   final String image;
@@ -10,6 +11,7 @@ class FootwareModel {
   final String? isLiked;
 
   FootwareModel({
+    this.id,
     required this.title,
     required this.description,
     required this.image,

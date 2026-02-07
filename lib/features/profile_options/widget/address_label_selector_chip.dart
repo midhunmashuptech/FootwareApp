@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:footware_app/features/profile_options/cubit/add_address_state.dart';
 import 'package:footware_app/features/profile_options/cubit/add_adrress_cubit.dart';
-import 'package:footware_app/features/profile_options/widget/add_label_bootom_modal.dart';
+import 'package:footware_app/features/profile_options/widget/add_label_bottom_modal.dart';
 
 /// 🏷 LABEL SELECTOR WITH CUBIT
 class AddressLabelSelector extends StatelessWidget {
