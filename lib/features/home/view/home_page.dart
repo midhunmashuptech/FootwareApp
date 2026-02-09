@@ -4,7 +4,6 @@ import 'package:footware_app/features/common/app_colors.dart';
 import 'package:footware_app/features/common/routes.dart';
 import 'package:footware_app/features/common/widget/footwear_card.dart';
 import 'package:footware_app/features/home/bloc/home_bloc.dart';
-import 'package:footware_app/features/home/model/banner_item.dart';
 import 'package:footware_app/features/home/widget/banner_card.dart';
 
 class HomePage extends StatefulWidget {
@@ -56,7 +55,7 @@ class _HomePageState extends State<HomePage> {
                         children: const [
                           Text(
                             'Good Morning',
-                            style: TextStyle(fontSize: 14, color: Colors.grey),
+                            style: TextStyle(fontSize: 14, color: AppColors.darkGrey),
                           ),
                           SizedBox(height: 2),
                           Text(
@@ -125,8 +124,18 @@ class _HomePageState extends State<HomePage> {
                                       ),
                                     ),
                                     TextButton(
-                                      onPressed: () {},
-                                      child: Text("See All"),
+                                      onPressed: () {
+                                        Navigator.pushNamed(
+                                          context,
+                                          Routes.productDetails,
+                                        );
+                                      },
+                                      child: Text(
+                                        "See All",
+                                        style: TextStyle(
+                                          color: AppColors.primaryBlack,
+                                        ),
+                                      ),
                                     ),
                                   ],
                                 ),
@@ -163,8 +172,8 @@ class _HomePageState extends State<HomePage> {
                                     width: _currentIndex == index ? 18 : 6,
                                     decoration: BoxDecoration(
                                       color: _currentIndex == index
-                                          ? Colors.red
-                                          : Colors.grey.shade300,
+                                          ? AppColors.primaryRed
+                                          : AppColors.darkGrey,
                                       borderRadius: BorderRadius.circular(10),
                                     ),
                                   ),
@@ -187,30 +196,39 @@ class _HomePageState extends State<HomePage> {
                                   itemBuilder: (context, index) {
                                     final item = state.categories[index];
 
-                                    return Column(
-                                      children: [
-                                        Container(
-                                          width: 64,
-                                          height: 64,
-                                          decoration: const BoxDecoration(
-                                            shape: BoxShape.circle,
-                                            color: Color(0xFFF1F1F1),
+                                    return GestureDetector(
+                                      onTap: () {
+                                        Navigator.pushNamed(
+                                          context,
+                                          Routes.categoryBasedApparels,
+                                          arguments: item,
+                                        );
+                                      },
+                                      child: Column(
+                                        children: [
+                                          Container(
+                                            width: 64,
+                                            height: 64,
+                                            decoration: const BoxDecoration(
+                                              shape: BoxShape.circle,
+                                              color: AppColors.grey,
+                                            ),
+                                            child: Icon(
+                                              Icons.sports_soccer_rounded,
+                                              size: 28,
+                                              color: AppColors.primaryBlack,
+                                            ),
                                           ),
-                                          child: Icon(
-                                            Icons.sports_soccer_rounded,
-                                            size: 28,
-                                            color: Colors.black,
+                                          const SizedBox(height: 8),
+                                          Text(
+                                            item,
+                                            style: const TextStyle(
+                                              fontSize: 14,
+                                              fontWeight: FontWeight.w500,
+                                            ),
                                           ),
-                                        ),
-                                        const SizedBox(height: 8),
-                                        Text(
-                                          item,
-                                          style: const TextStyle(
-                                            fontSize: 14,
-                                            fontWeight: FontWeight.w500,
-                                          ),
-                                        ),
-                                      ],
+                                        ],
+                                      ),
                                     );
                                   },
                                 ),
@@ -234,7 +252,15 @@ class _HomePageState extends State<HomePage> {
                         fontSize: 16,
                       ),
                     ),
-                    TextButton(onPressed: () {}, child: Text("See All")),
+                    TextButton(
+                      onPressed: () {
+                        Navigator.pushNamed(context, Routes.mostPopular);
+                      },
+                      child: Text(
+                        "See All",
+                        style: TextStyle(color: AppColors.primaryBlack),
+                      ),
+                    ),
                   ],
                 ),
               ),

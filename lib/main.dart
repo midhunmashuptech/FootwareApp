@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:footware_app/features/common/app_colors.dart';
+import 'package:footware_app/features/cart/bloc/cart_bloc.dart';
 import 'package:footware_app/features/common/app_router.dart';
 import 'package:footware_app/features/common/routes.dart';
 import 'package:footware_app/features/home/bloc/home_bloc.dart';
 import 'package:footware_app/features/home/bloc/wishlist_bloc.dart';
 import 'package:footware_app/features/home/cubit/bottom_nav_cubit.dart';
 import 'package:footware_app/features/profile/cubit/dark_mode_cubit.dart';
+import 'package:footware_app/features/profile_options/cubit/add_adrress_cubit.dart';
 
 void main() {
   runApp(
@@ -16,6 +17,8 @@ void main() {
         BlocProvider(create: (_) => DarkModeCubit()),
         BlocProvider(create: (_) => HomeBloc()),
         BlocProvider(create: (_) => WishlistBloc()),
+        BlocProvider(create: (_) => AddressFormCubit()),
+        BlocProvider(create: (_) => CartBloc()),
       ],
       child: const MyApp(),
     ),

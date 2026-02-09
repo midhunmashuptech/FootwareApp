@@ -79,11 +79,17 @@ class _ProfilePageState extends State<ProfilePage> {
                         onTap: () {
                           Navigator.of(
                             context,
-                            rootNavigator: true,
                           ).pushNamed(Routes.editProfile);
                         },
                       ),
-                      buildTile(Icons.location_on_outlined, "Address"),
+                      buildTile(
+                        Icons.location_on_outlined, 
+                        "Address",
+                        onTap:  () {
+                          Navigator.of(
+                            context,
+                          ).pushNamed(Routes.savedAddress);
+                        },),
                       buildTile(
                         Icons.notifications_none,
                         "Notification",

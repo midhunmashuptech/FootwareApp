@@ -1,0 +1,64 @@
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:footware_app/features/common/app_colors.dart';
+import '../model/order_model.dart';
+import 'order_state.dart';
+
+class OrderCubit extends Cubit<OrderState> {
+  OrderCubit()
+    : super(
+        OrderState(
+          activeOrders: [
+            OrderModel(
+              title: "RX - Swiss Training Shoes",
+              subtitle: "Arriving today",
+              status: OrderStatus.active,
+              size: "M",
+              price: 1899,
+              imagePath:
+                  'https://png.pngtree.com/png-vector/20250624/ourmid/pngtree-a-high-quality-sports-shoes-png-image_16585846.png',
+              isAsset: true,
+              colors: [
+                AppColors.primaryBlack,
+                AppColors.offerRed,
+                AppColors.darkGreen,
+              ],
+              deliveryText: "In Delivery",
+              onPressed: () {},
+            ),
+            OrderModel(
+              title: "RX - Swiss Training Shoes",
+              subtitle: "Arriving today",
+              status: OrderStatus.active,
+              size: "L",
+              price: 1899,
+              imagePath:
+                  'https://png.pngtree.com/png-vector/20250624/ourmid/pngtree-a-high-quality-sports-shoes-png-image_16585846.png',
+              isAsset: true,
+              colors: [AppColors.offerBlue, AppColors.offerBrown],
+              deliveryText: "In Delivery",
+              onPressed: () {},
+            ),
+          ],
+          completedOrders: [
+            OrderModel(
+              title: "RX - Swiss Training Shoes",
+              subtitle: "Delivered on 12 January 2026",
+              status: OrderStatus.completed,
+              size: "XL",
+              price: 2490,
+              imagePath:
+                  'https://png.pngtree.com/png-clipart/20240901/original/pngtree-sports-shoes-png-image_15910407.png',
+              isAsset: true,
+              colors: [
+                AppColors.offerBlue,
+                AppColors.offerRed,
+                AppColors.darkGreen,
+              ],
+              deliveryText: "Delivered on 12 January 2026",
+              onPressed: () {
+              },
+            ),
+          ],
+        ),
+      );
+}
