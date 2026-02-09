@@ -126,12 +126,7 @@ class _HomePageState extends State<HomePage> {
                                     ),
                                     TextButton(
                                       onPressed: () {},
-                                      child: Text(
-                                        "See All",
-                                        style: TextStyle(
-                                          color: AppColors.primaryBlack,
-                                        ),
-                                      ),
+                                      child: Text("See All"),
                                     ),
                                   ],
                                 ),
@@ -239,13 +234,7 @@ class _HomePageState extends State<HomePage> {
                         fontSize: 16,
                       ),
                     ),
-                    TextButton(
-                      onPressed: () {},
-                      child: Text(
-                        "See All",
-                        style: TextStyle(color: AppColors.primaryBlack),
-                      ),
-                    ),
+                    TextButton(onPressed: () {}, child: Text("See All")),
                   ],
                 ),
               ),
