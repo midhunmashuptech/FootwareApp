@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:footware_app/features/cart/bloc/cart_bloc.dart';
+import 'package:footware_app/features/common/routes.dart';
 
 class CartPage extends StatelessWidget {
   const CartPage({super.key});
@@ -204,7 +205,11 @@ class CartPage extends StatelessWidget {
               const SizedBox(width: 20),
               Expanded(
                 child: ElevatedButton(
-                  onPressed: () {},
+                  onPressed: () {
+                     Navigator.of(
+                            context,
+                          ).pushNamed(Routes.checkout);
+                  },
                   style: ElevatedButton.styleFrom(
                     backgroundColor: Colors.black,
                     padding: const EdgeInsets.symmetric(

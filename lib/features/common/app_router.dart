@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:footware_app/features/cart/view/checkout_screen.dart';
 import 'package:footware_app/features/catergory_based_products/view/category_based_apparel.dart';
 import 'package:footware_app/features/common/routes.dart';
 
@@ -63,6 +64,9 @@ class AppRouter {
 
       case Routes.productDetails:
         return MaterialPageRoute(builder: (_) => ProductDetailsPage());
+
+      case Routes.checkout:
+        return MaterialPageRoute(builder: (_) => CheckoutPage());  
 
       default:
         return MaterialPageRoute(
