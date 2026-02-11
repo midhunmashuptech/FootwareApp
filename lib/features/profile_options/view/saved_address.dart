@@ -40,13 +40,15 @@ class SavedAddressPage extends StatelessWidget {
         ],
       ),
 
-      body: ListView.builder(
-        padding: const EdgeInsets.all(16),
-        itemCount: addressList.length,
-        itemBuilder: (context, index) {
-          final address = addressList[index];
-          return AddressCard(title: address.type, address: address.address);
-        },
+      body: SafeArea(
+        child: ListView.builder(
+          padding: const EdgeInsets.all(16),
+          itemCount: addressList.length,
+          itemBuilder: (context, index) {
+            final address = addressList[index];
+            return AddressCard(title: address.type, address: address.address);
+          },
+        ),
       ),
     );
   }
