@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:footware_app/features/cart/bloc/cart_bloc.dart';
+import 'package:footware_app/features/common/routes.dart';
 
 class CheckoutPage extends StatelessWidget {
   const CheckoutPage({super.key});
@@ -41,9 +42,14 @@ class CheckoutPage extends StatelessWidget {
                             "Shipping Address",
                             style: TextStyle(fontWeight: FontWeight.bold),
                           ),
-                           const Icon(Icons.sync, size: 20),
+                          GestureDetector(
+                            onTap: () {
+                            Navigator.of(
+                            context,
+                          ).pushNamed(Routes.addressSelectionPage);
+                            },
+                            child: Icon(Icons.sync, size: 20)),
                         ],
-                       
                       ),
                       const SizedBox(height: 10),
 
@@ -78,7 +84,7 @@ class CheckoutPage extends StatelessWidget {
                                 ],
                               ),
                             ),
-                           // const Icon(Icons.edit_outlined, size: 18),
+                            // const Icon(Icons.edit_outlined, size: 18),
                           ],
                         ),
                       ),
@@ -205,7 +211,11 @@ class CheckoutPage extends StatelessWidget {
                   child: SizedBox(
                     width: double.infinity,
                     child: ElevatedButton(
-                      onPressed: () {},
+                      onPressed: () {
+                        //  Navigator.of(
+                        //     context,
+                        //   ).pushNamed(Routes.addressSelectionPage);
+                      },
                       style: ElevatedButton.styleFrom(
                         backgroundColor: Colors.black,
                         padding: const EdgeInsets.symmetric(vertical: 16),
