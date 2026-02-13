@@ -9,13 +9,14 @@ class OrderCubit extends Cubit<OrderState> {
         OrderState(
           activeOrders: [
             OrderModel(
+              id: "ORID4321567890",
               title: "RX - Swiss Training Shoes",
               subtitle: "Arriving today",
               status: OrderStatus.active,
               size: "M",
               price: 1899,
               imagePath:
-                  'https://png.pngtree.com/png-vector/20250624/ourmid/pngtree-a-high-quality-sports-shoes-png-image_16585846.png',
+                  "https://static.vecteezy.com/system/resources/thumbnails/046/323/369/small_2x/pair-of-stylish-green-and-gray-running-shoes-for-athletics-png.png",
               isAsset: true,
               colors: [
                 AppColors.primaryBlack,
@@ -23,31 +24,35 @@ class OrderCubit extends Cubit<OrderState> {
                 AppColors.darkGreen,
               ],
               deliveryText: "In Delivery",
+              trackingStage: TrackingStage.outForDelivery,
               onPressed: () {},
             ),
             OrderModel(
+               id: "ORID987654321234",
               title: "RX - Swiss Training Shoes",
               subtitle: "Arriving today",
               status: OrderStatus.active,
               size: "L",
               price: 1899,
               imagePath:
-                  'https://png.pngtree.com/png-vector/20250624/ourmid/pngtree-a-high-quality-sports-shoes-png-image_16585846.png',
+                  "https://static.vecteezy.com/system/resources/thumbnails/046/323/369/small_2x/pair-of-stylish-green-and-gray-running-shoes-for-athletics-png.png",
               isAsset: true,
               colors: [AppColors.offerBlue, AppColors.offerBrown],
               deliveryText: "In Delivery",
-              onPressed: () {},
+              onPressed: () {}, 
+              trackingStage: TrackingStage.shipped,
             ),
           ],
           completedOrders: [
             OrderModel(
+              id: "ORID098754321334",
               title: "RX - Swiss Training Shoes",
               subtitle: "Delivered on 12 January 2026",
               status: OrderStatus.completed,
               size: "XL",
               price: 2490,
               imagePath:
-                  'https://png.pngtree.com/png-clipart/20240901/original/pngtree-sports-shoes-png-image_15910407.png',
+                  "https://static.vecteezy.com/system/resources/thumbnails/046/323/369/small_2x/pair-of-stylish-green-and-gray-running-shoes-for-athletics-png.png",
               isAsset: true,
               colors: [
                 AppColors.offerBlue,
@@ -55,6 +60,7 @@ class OrderCubit extends Cubit<OrderState> {
                 AppColors.darkGreen,
               ],
               deliveryText: "Delivered on 12 January 2026",
+              trackingStage: TrackingStage.delivered,
               onPressed: () {
               },
             ),

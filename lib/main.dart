@@ -91,6 +91,8 @@ final lightTheme = ThemeData(
       foregroundColor: Colors.white,
     ),
   ),
+
+  cardColor: const Color(0xFFF7F7F7),
 );
 
 final darkTheme = ThemeData(
@@ -138,4 +140,5 @@ final darkTheme = ThemeData(
       foregroundColor: Colors.black,
     ),
   ),
+  cardColor: Color.fromARGB(255, 77, 77, 77),
 );

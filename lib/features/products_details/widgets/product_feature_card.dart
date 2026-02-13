@@ -21,27 +21,26 @@ class ProductFeatureCard extends StatelessWidget {
         border: Border.all(color: AppColors.secondaryGrey),
         borderRadius: BorderRadius.circular(12),
       ),
-      child: IntrinsicHeight(
-        child: Row(
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            //Icon
-            Icon(icon, color: iconColor, size: 26),
-
-            const SizedBox(width: 12),
-
-            // Divider
-            VerticalDivider(width: 20, thickness: 1, color: AppColors.darkGrey),
-
-            const SizedBox(width: 12),
-
-            // Text
-            Text(
+      child: Row(
+        children: [
+          //Icon
+          Icon(icon, color: iconColor, size: 26),
+      
+          const SizedBox(width: 10),
+      
+          // Divider
+          VerticalDivider(width: 10, thickness: 1, color: AppColors.darkGrey),
+      
+          const SizedBox(width: 10),
+      
+          // Text
+          Expanded(
+            child: Text(
               text,
               style: const TextStyle(fontSize: 13, fontWeight: FontWeight.w500),
             ),
-          ],
-        ),
+          ),
+        ],
       ),
     );
   }

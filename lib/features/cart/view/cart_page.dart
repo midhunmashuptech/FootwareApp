@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:footware_app/features/cart/bloc/cart_bloc.dart';
+import 'package:footware_app/features/common/routes.dart';
 
 class CartPage extends StatelessWidget {
   const CartPage({super.key});
@@ -31,19 +32,19 @@ class CartPage extends StatelessWidget {
 
       body: BlocBuilder<CartBloc, CartState>(
        builder: (context, state) {
-  if (state.items.isEmpty) {
-    return const Center(child: Text("Cart is Empty"));
-  }
-
-  return Column(
-    children: [
+        if (state.items.isEmpty) {
+          return const Center(child: Text("Cart is Empty"));
+        }
+      
+        return Column(
+          children: [
       Expanded(
         child: ListView.builder(
           padding: const EdgeInsets.all(16),
           itemCount: state.items.length,
           itemBuilder: (context, index) {
             final item = state.items[index];
-
+      
             return Container(
               margin: const EdgeInsets.only(bottom: 16),
               padding: const EdgeInsets.all(12),
@@ -69,9 +70,9 @@ class CartPage extends StatelessWidget {
                       ),
                     ),
                   ),
-
+      
                   const SizedBox(width: 16),
-
+      
                   // Product Details
                   Expanded(
                     child: Column(
@@ -85,9 +86,9 @@ class CartPage extends StatelessWidget {
                             fontWeight: FontWeight.w600,
                           ),
                         ),
-
+      
                         const SizedBox(height: 6),
-
+      
                         Row(
                           children: [
                             // Color dot
@@ -106,9 +107,9 @@ class CartPage extends StatelessWidget {
                             ),
                           ],
                         ),
-
+      
                         const SizedBox(height: 8),
-
+      
                         Text(
                           "₹ ${item.totalPrice}",
                           style: const TextStyle(
@@ -119,7 +120,7 @@ class CartPage extends StatelessWidget {
                       ],
                     ),
                   ),
-
+      
                   // Quantity Selector
                   Container(
                     height: 35,
@@ -164,7 +165,7 @@ class CartPage extends StatelessWidget {
           },
         ),
       ),
-
+      
       // Bottom Checkout Section
       Container(
         padding: const EdgeInsets.symmetric(
@@ -204,7 +205,11 @@ class CartPage extends StatelessWidget {
               const SizedBox(width: 20),
               Expanded(
                 child: ElevatedButton(
-                  onPressed: () {},
+                  onPressed: () {
+                     Navigator.of(
+                            context,
+                          ).pushNamed(Routes.checkout);
+                  },
                   style: ElevatedButton.styleFrom(
                     backgroundColor: Colors.black,
                     padding: const EdgeInsets.symmetric(
@@ -235,8 +240,8 @@ class CartPage extends StatelessWidget {
           ),
         ),
       ),
-    ],
-  );
+          ],
+        );
         },
       ),
     );

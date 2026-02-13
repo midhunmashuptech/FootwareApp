@@ -6,7 +6,12 @@ abstract class ProductDetailsState {}
 class ProductDetailsInitial extends ProductDetailsState {}
 
 class ProductDetailsLoaded extends ProductDetailsState {
+  final int id;
+  final List<List<String>> images;
+  final List<String> sizes;
+  final List<Map<String, dynamic>> details;
   final List<Map<String, dynamic>> features;
+  final String title;
   final String description;
   final List<FootwareModel> similarProducts;
 
@@ -22,7 +27,12 @@ class ProductDetailsLoaded extends ProductDetailsState {
   final List<UserReviewModel> userReviews;
 
   ProductDetailsLoaded({
+    required this.id,
+    required this.images,
+    required this.sizes,
+    required this.details,
     required this.features,
+    required this.title,
     required this.description,
     required this.similarProducts,
     required this.averageRating,
@@ -42,7 +52,12 @@ class ProductDetailsLoaded extends ProductDetailsState {
     int? totalReviews,
   }) {
     return ProductDetailsLoaded(
+      id: id,
+      images: images,
+      sizes: sizes,
+      details: details,
       features: features,
+      title: title,
       description: description,
       similarProducts: similarProducts,
       averageRating: averageRating ?? this.averageRating,
