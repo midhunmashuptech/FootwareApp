@@ -38,6 +38,7 @@ dependencies:
   flutter_bloc: ^9.1.1
   shared_preferences: ^2.5.4
   iconsax: ^0.0.8
+  image_picker: ^1.2.1
 
 
 

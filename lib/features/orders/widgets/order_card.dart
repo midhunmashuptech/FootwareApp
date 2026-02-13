@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:footware_app/features/common/app_colors.dart';
 import 'package:footware_app/features/common/routes.dart';
+import 'package:footware_app/features/orders/view/review_botttom_sheet.dart';
 import '../model/order_model.dart';
 
 class OrderCard extends StatelessWidget {
@@ -11,6 +12,17 @@ class OrderCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final bool isCompleted = order.status == OrderStatus.completed;
+
+    void _showReviewBottomSheet(BuildContext context, OrderModel order) {
+      showModalBottomSheet(
+        context: context,
+        isScrollControlled: true,
+        backgroundColor: Colors.transparent,
+        builder: (context) {
+          return ReviewBottomSheet(order: order);
+        },
+      );
+    }
 
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
@@ -114,7 +126,9 @@ class OrderCard extends StatelessWidget {
                     ),
                     ElevatedButton(
                       onPressed: () {
-                        if (!isCompleted) {
+                        if (isCompleted) {
+                          _showReviewBottomSheet(context, order);
+                        } else {
                           Navigator.pushNamed(
                             context,
                             Routes.trackOrder,
