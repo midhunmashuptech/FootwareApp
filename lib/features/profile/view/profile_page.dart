@@ -77,19 +77,16 @@ class _ProfilePageState extends State<ProfilePage> {
                         Icons.person_outline,
                         "Edit Profile",
                         onTap: () {
-                          Navigator.of(
-                            context,
-                          ).pushNamed(Routes.editProfile);
+                          Navigator.of(context).pushNamed(Routes.editProfile);
                         },
                       ),
                       buildTile(
-                        Icons.location_on_outlined, 
+                        Icons.location_on_outlined,
                         "Address",
-                        onTap:  () {
-                          Navigator.of(
-                            context,
-                          ).pushNamed(Routes.savedAddress);
-                        },),
+                        onTap: () {
+                          Navigator.of(context).pushNamed(Routes.savedAddress);
+                        },
+                      ),
                       buildTile(
                         Icons.notifications_none,
                         "Notification",
@@ -113,7 +110,13 @@ class _ProfilePageState extends State<ProfilePage> {
                         "Dark Mode",
                         isSwitch: true,
                       ),
-                      buildTile(Icons.lock_outline, "Privacy Policy"),
+                      buildTile(
+                        Icons.lock_outline,
+                        "Privacy Policy",
+                        onTap: () {
+                          Navigator.pushNamed(context, Routes.privacyAndPolicy);
+                        },
+                      ),
                       buildTile(Icons.headphones_outlined, "Help & Support"),
 
                       const SizedBox(height: 10),
