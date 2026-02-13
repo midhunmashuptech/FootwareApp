@@ -1,14 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:footware_app/features/common/app_colors.dart';
+import 'package:footware_app/features/common/routes.dart';
 import '../model/order_model.dart';
 
 class OrderCard extends StatelessWidget {
   final OrderModel order;
 
-  const OrderCard({
-    super.key, 
-    required this.order,
-    });
+  const OrderCard({super.key, required this.order});
 
   @override
   Widget build(BuildContext context) {
@@ -114,15 +112,27 @@ class OrderCard extends StatelessWidget {
                         fontWeight: FontWeight.bold,
                       ),
                     ),
-                    ElevatedButton(onPressed: (){}, style: ElevatedButton.styleFrom(backgroundColor: AppColors.primaryBlack),
-                        child: Text(
-                          isCompleted ? "Leave Review" : "Track Order",
-                          style: const TextStyle(
-                            color: AppColors.primaryWhite,
-                            fontSize: 12.5,
-                          ),
+                    ElevatedButton(
+                      onPressed: () {
+                        if (!isCompleted) {
+                          Navigator.pushNamed(
+                            context,
+                            Routes.trackOrder,
+                            arguments: order,
+                          );
+                        }
+                      },
+                      style: ElevatedButton.styleFrom(
+                        backgroundColor: AppColors.primaryBlack,
+                      ),
+                      child: Text(
+                        isCompleted ? "Leave Review" : "Track Order",
+                        style: const TextStyle(
+                          color: AppColors.primaryWhite,
+                          fontSize: 12.5,
                         ),
-                    )
+                      ),
+                    ),
                   ],
                 ),
               ],

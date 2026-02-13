@@ -9,6 +9,7 @@ class OrderCubit extends Cubit<OrderState> {
         OrderState(
           activeOrders: [
             OrderModel(
+              id: "ORID4321567890",
               title: "RX - Swiss Training Shoes",
               subtitle: "Arriving today",
               status: OrderStatus.active,
@@ -23,9 +24,11 @@ class OrderCubit extends Cubit<OrderState> {
                 AppColors.darkGreen,
               ],
               deliveryText: "In Delivery",
+              trackingStage: TrackingStage.outForDelivery,
               onPressed: () {},
             ),
             OrderModel(
+               id: "ORID987654321234",
               title: "RX - Swiss Training Shoes",
               subtitle: "Arriving today",
               status: OrderStatus.active,
@@ -36,11 +39,13 @@ class OrderCubit extends Cubit<OrderState> {
               isAsset: true,
               colors: [AppColors.offerBlue, AppColors.offerBrown],
               deliveryText: "In Delivery",
-              onPressed: () {},
+              onPressed: () {}, 
+              trackingStage: TrackingStage.shipped,
             ),
           ],
           completedOrders: [
             OrderModel(
+              id: "ORID098754321334",
               title: "RX - Swiss Training Shoes",
               subtitle: "Delivered on 12 January 2026",
               status: OrderStatus.completed,
@@ -55,6 +60,7 @@ class OrderCubit extends Cubit<OrderState> {
                 AppColors.darkGreen,
               ],
               deliveryText: "Delivered on 12 January 2026",
+              trackingStage: TrackingStage.delivered,
               onPressed: () {
               },
             ),

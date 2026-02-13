@@ -1,10 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:footware_app/features/cart/view/checkout_screen.dart';
+import 'package:footware_app/features/cart/view/select_address.dart';
 import 'package:footware_app/features/catergory_based_products/view/category_based_apparel.dart';
 import 'package:footware_app/features/common/routes.dart';
 
 import 'package:footware_app/features/home/view/most_popular_screen.dart';
+import 'package:footware_app/features/orders/model/order_model.dart';
 import 'package:footware_app/features/orders/view/orders_page.dart';
+import 'package:footware_app/features/orders/view/track_order.dart';
 import 'package:footware_app/features/products_details/view/product_details_screen.dart';
 import 'package:footware_app/features/profile/view/notifications.dart';
 import 'package:footware_app/features/profile_options/cubit/edit_profile_cubit.dart';
@@ -62,6 +66,16 @@ class AppRouter {
 
       case Routes.productDetails:
         return MaterialPageRoute(builder: (_) => ProductDetailsPage());
+
+      case Routes.checkout:
+        return MaterialPageRoute(builder: (_) => CheckoutPage());
+
+      case Routes.addressSelectionPage:
+        return MaterialPageRoute(builder: (_) => AddressSelectionPage());
+
+      case Routes.trackOrder:
+        final order = settings.arguments as OrderModel;
+        return MaterialPageRoute(builder: (_) => TrackOrderPage(order: order));
 
       default:
         return MaterialPageRoute(

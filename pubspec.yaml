@@ -37,6 +37,9 @@ dependencies:
   persistent_bottom_nav_bar: ^6.2.1
   flutter_bloc: ^9.1.1
   shared_preferences: ^2.5.4
+  iconsax: ^0.0.8
+
+
 
 dev_dependencies:
   flutter_test:
