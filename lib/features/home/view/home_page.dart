@@ -127,7 +127,7 @@ class _HomePageState extends State<HomePage> {
                                       onPressed: () {
                                         Navigator.pushNamed(
                                           context,
-                                          Routes.productDetails,
+                                          Routes.specialOffers,
                                         );
                                       },
                                       child: Text(
