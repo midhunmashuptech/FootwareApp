@@ -16,7 +16,7 @@ class OrderCubit extends Cubit<OrderState> {
               size: "M",
               price: 1899,
               imagePath:
-              "https://static.vecteezy.com/system/resources/thumbnails/046/323/369/small_2x/pair-of-stylish-green-and-gray-running-shoes-for-athletics-png.png",
+                  "https://static.vecteezy.com/system/resources/thumbnails/046/323/369/small_2x/pair-of-stylish-green-and-gray-running-shoes-for-athletics-png.png",
               isAsset: true,
               colors: [
                 AppColors.primaryBlack,
@@ -35,7 +35,7 @@ class OrderCubit extends Cubit<OrderState> {
               size: "L",
               price: 1899,
               imagePath:
-          "https://static.vecteezy.com/system/resources/thumbnails/046/323/598/small/pair-of-colorful-sports-shoes-for-active-lifestyle-png.png",
+                  "https://static.vecteezy.com/system/resources/thumbnails/046/323/369/small_2x/pair-of-stylish-green-and-gray-running-shoes-for-athletics-png.png",
               isAsset: true,
               colors: [AppColors.offerBlue, AppColors.offerBrown],
               deliveryText: "In Delivery",
@@ -52,7 +52,7 @@ class OrderCubit extends Cubit<OrderState> {
               size: "XL",
               price: 2490,
               imagePath:
-          "https://static.vecteezy.com/system/resources/previews/046/407/753/non_2x/unique-and-aesthetically-colorful-details-of-the-upper-mesh-yellow-premium-running-sports-shoes-sneakers-isolated-on-a-transparent-background-png.png",
+                  "https://static.vecteezy.com/system/resources/thumbnails/046/323/369/small_2x/pair-of-stylish-green-and-gray-running-shoes-for-athletics-png.png",
               isAsset: true,
               colors: [
                 AppColors.offerBlue,
