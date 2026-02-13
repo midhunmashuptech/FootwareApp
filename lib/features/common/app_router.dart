@@ -6,6 +6,7 @@ import 'package:footware_app/features/catergory_based_products/view/category_bas
 import 'package:footware_app/features/common/routes.dart';
 
 import 'package:footware_app/features/home/view/most_popular_screen.dart';
+import 'package:footware_app/features/home/view/special_offers.dart';
 import 'package:footware_app/features/orders/model/order_model.dart';
 import 'package:footware_app/features/orders/view/orders_page.dart';
 import 'package:footware_app/features/orders/view/track_order.dart';
@@ -80,6 +81,8 @@ class AppRouter {
         final order = settings.arguments as OrderModel;
         return MaterialPageRoute(builder: (_) => TrackOrderPage(order: order));
 
+      case Routes.specialOffers:
+        return MaterialPageRoute(builder: (_) => SpecialOffers());
       default:
         return MaterialPageRoute(
           builder: (_) => Scaffold(body: Text("Route not found!")),

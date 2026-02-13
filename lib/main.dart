@@ -7,6 +7,7 @@ import 'package:footware_app/features/home/bloc/home_bloc.dart';
 import 'package:footware_app/features/home/bloc/wishlist_bloc.dart';
 import 'package:footware_app/features/home/cubit/bottom_nav_cubit.dart';
 import 'package:footware_app/features/profile/cubit/dark_mode_cubit.dart';
+import 'package:footware_app/features/profile/cubit/profile_cubit.dart';
 import 'package:footware_app/features/profile_options/cubit/add_adrress_cubit.dart';
 
 void main() {
@@ -19,6 +20,7 @@ void main() {
         BlocProvider(create: (_) => WishlistBloc()),
         BlocProvider(create: (_) => AddressFormCubit()),
         BlocProvider(create: (_) => CartBloc()),
+        BlocProvider(create: (_) => ProfileCubit()),
       ],
       child: const MyApp(),
     ),

@@ -17,5 +17,6 @@ class Routes {
   static const String checkout = "/checkout";
   static const String addressSelectionPage = "/addressSelectionPage";
   static const String trackOrder = "/trackOrder";
+  static const String specialOffers = "/specialOffers";
 }
 
