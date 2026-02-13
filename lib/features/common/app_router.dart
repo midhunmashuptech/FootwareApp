@@ -7,6 +7,7 @@ import 'package:footware_app/features/home/view/most_popular_screen.dart';
 import 'package:footware_app/features/orders/view/orders_page.dart';
 import 'package:footware_app/features/products_details/view/product_details_screen.dart';
 import 'package:footware_app/features/profile/view/notifications.dart';
+import 'package:footware_app/features/profile/view/privacy_and_policy.dart';
 import 'package:footware_app/features/profile_options/cubit/edit_profile_cubit.dart';
 import 'package:footware_app/features/profile_options/view/add_address.dart';
 import 'package:footware_app/features/profile_options/view/edit_address.dart';
@@ -62,6 +63,8 @@ class AppRouter {
 
       case Routes.productDetails:
         return MaterialPageRoute(builder: (_) => ProductDetailsPage());
+      case Routes.privacyAndPolicy:
+        return MaterialPageRoute(builder: (_) => PrivacyAndPolicy());
 
       default:
         return MaterialPageRoute(

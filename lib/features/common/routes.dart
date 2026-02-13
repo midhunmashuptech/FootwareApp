@@ -13,4 +13,5 @@ class Routes {
   static const String mostPopular = "/mostpopular";
   static const String editAddress = "/editAddress";
   static const String productDetails = "/productDetails";
+  static const String privacyAndPolicy = "/privacyAndPolicy";
 }
