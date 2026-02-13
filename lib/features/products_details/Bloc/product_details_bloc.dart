@@ -23,6 +23,46 @@ class ProductDetailsBloc
   ) {
     emit(
       ProductDetailsLoaded(
+        id: 21,
+        title: "Softride Enzo Evo Women’s Lightweight Running Shoes",
+        sizes: ["S", "M", "L", "XL", "XXL"],
+        images: [
+          [
+            "https://adn-static1.nykaa.com/nykdesignstudio-images/pub/media/catalog/product/5/3/5324c8eNike-FN0228-110_1.jpg?rnd=20200526195200&tr=w-1080",
+            "https://adn-static1.nykaa.com/nykdesignstudio-images/pub/media/catalog/product/5/3/5324c8eNike-FN0228-110_4.jpg?rnd=20200526195200&tr=w-1080",
+            "https://adn-static1.nykaa.com/nykdesignstudio-images/pub/media/catalog/product/5/3/5324c8eNike-FN0228-110_5.jpg?rnd=20200526195200&tr=w-1080",
+            "https://adn-static1.nykaa.com/nykdesignstudio-images/pub/media/catalog/product/5/3/5324c8eNike-FN0228-110_7.jpg?rnd=20200526195200&tr=w-1080",
+            "https://adn-static1.nykaa.com/nykdesignstudio-images/pub/media/catalog/product/5/3/5324c8eNike-FN0228-110_8.jpg?rnd=20200526195200&tr=w-1080",
+            "https://adn-static1.nykaa.com/nykdesignstudio-images/pub/media/catalog/product/5/3/5324c8eNike-FN0228-110_2.jpg?rnd=20200526195200&tr=w-1080",
+          ],
+          [
+            "https://adn-static1.nykaa.com/nykdesignstudio-images/pub/media/catalog/product/5/3/5324c8eNike-FN0228-001_1.jpg?rnd=20200526195200&tr=w-1080",
+            "https://adn-static1.nykaa.com/nykdesignstudio-images/pub/media/catalog/product/5/3/5324c8eNike-FN0228-001_4.jpg?rnd=20200526195200&tr=w-1080",
+            "https://adn-static1.nykaa.com/nykdesignstudio-images/pub/media/catalog/product/5/3/5324c8eNike-FN0228-001_5.jpg?rnd=20200526195200&tr=w-1080",
+            "https://adn-static1.nykaa.com/nykdesignstudio-images/pub/media/catalog/product/5/3/5324c8eNike-FN0228-001_7.jpg?rnd=20200526195200&tr=w-1080",
+            "https://adn-static1.nykaa.com/nykdesignstudio-images/pub/media/catalog/product/5/3/5324c8eNike-FN0228-001_8.jpg?rnd=20200526195200&tr=w-1080",
+            "https://adn-static1.nykaa.com/nykdesignstudio-images/pub/media/catalog/product/5/3/5324c8eNike-FN0228-001_2.jpg?rnd=20200526195200&tr=w-1080"
+          ],
+          [
+            "https://adn-static1.nykaa.com/nykdesignstudio-images/pub/media/catalog/product/5/3/5324c8eNike-FN0228-302_1.jpg?rnd=20200526195200&tr=w-1080",
+            "https://adn-static1.nykaa.com/nykdesignstudio-images/pub/media/catalog/product/5/3/5324c8eNike-FN0228-302_4.jpg?rnd=20200526195200&tr=w-1080",
+            "https://adn-static1.nykaa.com/nykdesignstudio-images/pub/media/catalog/product/5/3/5324c8eNike-FN0228-302_5.jpg?rnd=20200526195200&tr=w-1080",
+            "https://adn-static1.nykaa.com/nykdesignstudio-images/pub/media/catalog/product/5/3/5324c8eNike-FN0228-302_7.jpg?rnd=20200526195200&tr=w-1080",
+          ],
+          [
+            "https://adn-static1.nykaa.com/nykdesignstudio-images/pub/media/catalog/product/5/3/5324c8eNike-FN0228-109_1.jpg?rnd=20200526195200&tr=w-1080",
+            "https://adn-static1.nykaa.com/nykdesignstudio-images/pub/media/catalog/product/5/3/5324c8eNike-FN0228-109_4.jpg?rnd=20200526195200&tr=w-1080",
+            "https://adn-static1.nykaa.com/nykdesignstudio-images/pub/media/catalog/product/5/3/5324c8eNike-FN0228-109_5.jpg?rnd=20200526195200&tr=w-1080",
+            "https://adn-static1.nykaa.com/nykdesignstudio-images/pub/media/catalog/product/5/3/5324c8eNike-FN0228-109_7.jpg?rnd=20200526195200&tr=w-1080",
+          ],
+        ],
+        details: const [
+          {'label': 'Type', 'value': 'Formal'},
+          {'label': 'Size', 'value': '6'},
+          {'label': 'Material', 'value': 'Leather'},
+          {'label': 'Color', 'value': 'Brown'},
+          {'label': 'Heal Size', 'value': '2 inch'},
+        ],
         features: const [
           {
             'icon': Icons.trending_up,
@@ -41,16 +81,25 @@ class ProductDetailsBloc
           },
         ],
         description:
-            "These running shoes are designed for everyday comfort with a stylish look.",
+            "The Puma Softride Enzo Evo Women’s Lightweight Running Shoes are designed to deliver all-day comfort and supported performance whether you’re hitting the pavement or just walking around town. This product adds extra padded comfort underfoot, making these sneakers perfect",
         similarProducts: [
           FootwareModel(
-            title: "Running Shoes",
-            description: "Comfortable running shoes",
+            title: "RX - Swiss Training Shoe | Orange and White",
+            description: "description",
             image:
-                "https://static.vecteezy.com/system/resources/previews/046/407/753/non_2x/unique-and-aesthetically-colorful-details-of-the-upper-mesh-yellow-premium-running-sports-shoes-sneakers-isolated-on-a-transparent-background-png.png",
-            price: 1999,
-            category: "Sports",
-            rating: RatingModel(rating: 4.5, reviews: "120"),
+                "https://static.vecteezy.com/system/resources/thumbnails/046/323/369/small_2x/pair-of-stylish-green-and-gray-running-shoes-for-athletics-png.png",
+            rating: RatingModel(rating: 4.0, reviews: "7K+"),
+            price: 2500,
+            category: "Running",
+          ),
+          FootwareModel(
+            title: "RX - Swiss Training Shoe | Yellow and Black",
+            description: "description",
+            image:
+                "https://static.vecteezy.com/system/resources/thumbnails/046/323/598/small/pair-of-colorful-sports-shoes-for-active-lifestyle-png.png",
+            rating: RatingModel(rating: 3.5, reviews: "12K+"),
+            price: 3000,
+            category: "Running",
           ),
         ],
         averageRating: 4.2,
@@ -79,30 +128,21 @@ class ProductDetailsBloc
     );
   }
 
-  void _onUpdateRating(
-    UpdateRating event,
-    Emitter<ProductDetailsState> emit,
-  ) {
+  void _onUpdateRating(UpdateRating event, Emitter<ProductDetailsState> emit) {
     final current = state as ProductDetailsLoaded;
     if (!current.reviewSubmitted) {
       emit(current.copyWith(userRating: event.rating));
     }
   }
 
-  void _onUpdateReview(
-    UpdateReview event,
-    Emitter<ProductDetailsState> emit,
-  ) {
+  void _onUpdateReview(UpdateReview event, Emitter<ProductDetailsState> emit) {
     final current = state as ProductDetailsLoaded;
     if (!current.reviewSubmitted) {
       emit(current.copyWith(userReview: event.review));
     }
   }
 
-  void _onSubmitReview(
-    SubmitReview event,
-    Emitter<ProductDetailsState> emit,
-  ) {
+  void _onSubmitReview(SubmitReview event, Emitter<ProductDetailsState> emit) {
     final current = state as ProductDetailsLoaded;
 
     final newReview = UserReviewModel(
@@ -119,9 +159,8 @@ class ProductDetailsBloc
 
     final newTotal = current.totalReviews + 1;
     final newAverage =
-        ((current.averageRating * current.totalReviews) +
-                current.userRating) /
-            newTotal;
+        ((current.averageRating * current.totalReviews) + current.userRating) /
+        newTotal;
 
     emit(
       current.copyWith(

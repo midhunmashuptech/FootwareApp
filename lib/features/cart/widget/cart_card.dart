@@ -36,6 +36,7 @@ class CartItemCard extends StatelessWidget {
               borderRadius: BorderRadius.circular(18),
             ),
             child: Image.network(
+              color: AppColors.primaryWhite,
               item.product.image,
               fit: BoxFit.contain,
             ),

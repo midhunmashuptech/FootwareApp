@@ -15,7 +15,7 @@ class OrderCubit extends Cubit<OrderState> {
               size: "M",
               price: 1899,
               imagePath:
-                  'https://png.pngtree.com/png-vector/20250624/ourmid/pngtree-a-high-quality-sports-shoes-png-image_16585846.png',
+                  "https://static.vecteezy.com/system/resources/thumbnails/046/323/369/small_2x/pair-of-stylish-green-and-gray-running-shoes-for-athletics-png.png",
               isAsset: true,
               colors: [
                 AppColors.primaryBlack,
@@ -32,7 +32,7 @@ class OrderCubit extends Cubit<OrderState> {
               size: "L",
               price: 1899,
               imagePath:
-                  'https://png.pngtree.com/png-vector/20250624/ourmid/pngtree-a-high-quality-sports-shoes-png-image_16585846.png',
+                  "https://static.vecteezy.com/system/resources/thumbnails/046/323/369/small_2x/pair-of-stylish-green-and-gray-running-shoes-for-athletics-png.png",
               isAsset: true,
               colors: [AppColors.offerBlue, AppColors.offerBrown],
               deliveryText: "In Delivery",
@@ -47,7 +47,7 @@ class OrderCubit extends Cubit<OrderState> {
               size: "XL",
               price: 2490,
               imagePath:
-                  'https://png.pngtree.com/png-clipart/20240901/original/pngtree-sports-shoes-png-image_15910407.png',
+                  "https://static.vecteezy.com/system/resources/thumbnails/046/323/369/small_2x/pair-of-stylish-green-and-gray-running-shoes-for-athletics-png.png",
               isAsset: true,
               colors: [
                 AppColors.offerBlue,
