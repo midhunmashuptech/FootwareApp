@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:footware_app/features/profile_options/cubit/edit_profile_cubit.dart';
-import 'package:footware_app/features/profile_options/cubit/edit_profile_state.dart';
+import 'package:footware_app/features/profile_options/bloc/edit_profile_bloc.dart';
+import 'package:footware_app/features/profile_options/bloc/edit_profile_event.dart';
+import 'package:footware_app/features/profile_options/bloc/edit_profile_state.dart';
 import 'package:footware_app/features/profile_options/widget/dropdown_field.dart';
 import 'package:footware_app/features/profile_options/widget/profile_text_field.dart';
 import 'package:footware_app/features/profile_options/widget/section_title.dart';
@@ -24,9 +25,14 @@ class _EditProfilePageState extends State<EditProfilePage> {
   final dobController = TextEditingController();
 
   @override
-  void initState() {
-    super.initState();
-    context.read<EditProfileCubit>().loadProfile();
+  void dispose() {
+    nameController.dispose();
+    phoneController.dispose();
+    emailController.dispose();
+    brandController.dispose();
+    locationController.dispose();
+    dobController.dispose();
+    super.dispose();
   }
 
   Future<void> _selectDate(BuildContext context) async {
@@ -38,16 +44,47 @@ class _EditProfilePageState extends State<EditProfilePage> {
     );
 
     if (picked != null) {
-      dobController.text = "${picked.day}/${picked.month}/${picked.year}";
+      final formatted =
+          "${picked.day}/${picked.month}/${picked.year}";
+      dobController.text = formatted;
+      context.read<EditProfileBloc>().add(UpdateDob(formatted));
     }
+  }
+
+  void _showImageSourceSheet(BuildContext context) {
+    showModalBottomSheet(
+      context: context,
+      builder: (_) => SafeArea(
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            ListTile(
+              leading: const Icon(Icons.camera_alt),
+              title: const Text("Take Photo"),
+              onTap: () {
+                context.read<EditProfileBloc>().add(PickImageFromCamera());
+                Navigator.pop(context);
+              },
+            ),
+            ListTile(
+              leading: const Icon(Icons.photo),
+              title: const Text("Choose from Gallery"),
+              onTap: () {
+                context.read<EditProfileBloc>().add(PickImageFromGallery());
+                Navigator.pop(context);
+              },
+            ),
+          ],
+        ),
+      ),
+    );
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(title: const Text("Edit Profile")),
-      body: BlocListener<EditProfileCubit, EditProfileState>(
-        listenWhen: (prev, curr) => prev.name != curr.name,
+      body: BlocListener<EditProfileBloc, EditProfileState>(
         listener: (context, state) {
           nameController.text = state.name ?? "";
           phoneController.text = state.phone ?? "";
@@ -55,12 +92,19 @@ class _EditProfilePageState extends State<EditProfilePage> {
           locationController.text = state.location ?? "";
           dobController.text = state.dob ?? "";
           brandController.text = state.brand ?? "";
+
+          // if (!state.isSaving && state.successMessage != null) {
+          //   ScaffoldMessenger.of(context).showSnackBar(
+          //     SnackBar(content: Text(state.successMessage!)),
+          //   );
+          // }
         },
-        child: BlocBuilder<EditProfileCubit, EditProfileState>(
+        child: BlocBuilder<EditProfileBloc, EditProfileState>(
           builder: (context, state) {
             if (state.isLoading) {
               return const Center(child: CircularProgressIndicator());
             }
+
             return SafeArea(
               child: SingleChildScrollView(
                 padding: const EdgeInsets.all(16),
@@ -69,135 +113,166 @@ class _EditProfilePageState extends State<EditProfilePage> {
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      /// 🔹 Profile Image
+
+                      /// PROFILE IMAGE
                       Center(
                         child: Stack(
                           children: [
-                            const CircleAvatar(
+                            CircleAvatar(
                               radius: 50,
-                              backgroundImage: NetworkImage(
-                                "https://upload.wikimedia.org/wikipedia/en/8/8b/ST3_Steve_Harrington_portrait.jpg",
-                              ),
+                              backgroundImage: state.profileImage != null
+                                  ? FileImage(state.profileImage!)
+                                  : const NetworkImage(
+                                          "https://upload.wikimedia.org/wikipedia/en/8/8b/ST3_Steve_Harrington_portrait.jpg",
+                                        )
+                                      as ImageProvider,
                             ),
                             Positioned(
                               bottom: 0,
                               right: 0,
-                              child: Container(
-                                padding: const EdgeInsets.all(6),
-                                decoration: BoxDecoration(
-                                  color: Theme.of(context).primaryColor,
-                                  shape: BoxShape.circle,
-                                ),
-                                child: const Icon(
-                                  Icons.camera_alt,
-                                  size: 16,
-                                  color: Colors.white,
+                              child: GestureDetector(
+                                onTap: () => _showImageSourceSheet(context),
+                                child: Container(
+                                  padding: const EdgeInsets.all(6),
+                                  decoration: BoxDecoration(
+                                    color: Theme.of(context).primaryColor,
+                                    shape: BoxShape.circle,
+                                  ),
+                                  child: const Icon(
+                                    Icons.camera_alt,
+                                    size: 16,
+                                    color: Colors.white,
+                                  ),
                                 ),
                               ),
                             ),
                           ],
                         ),
                       ),
-              
+
                       const SizedBox(height: 25),
-              
-                      ///  PERSONAL INFO
-                      SectionTitle(text: "Basic Information"),
+
+                      const SectionTitle(text: "Basic Information"),
+
                       ProfileTextField(
                         controller: nameController,
                         label: "Full Name",
                         hint: "Full Name",
                         icon: Icons.person,
+                        onChanged: (val) => context
+                            .read<EditProfileBloc>()
+                            .add(UpdateName(val)),
                       ),
+
                       ProfileTextField(
                         controller: phoneController,
                         label: "Phone Number",
                         hint: "Phone Number",
                         icon: Icons.phone,
                         keyboard: TextInputType.phone,
+                        onChanged: (val) => context
+                            .read<EditProfileBloc>()
+                            .add(UpdatePhone(val)),
                       ),
+
                       ProfileTextField(
-                        keyboard: TextInputType.emailAddress,
                         controller: emailController,
-                        label: "Eamil",
-                        hint: 'Email',
+                        label: "Email",
+                        hint: "Email",
                         icon: Icons.email,
+                        keyboard: TextInputType.emailAddress,
+                        onChanged: (val) => context
+                            .read<EditProfileBloc>()
+                            .add(UpdateEmail(val)),
                       ),
+
                       ProfileTextField(
                         controller: locationController,
                         label: "Location",
                         hint: "City, State",
                         icon: Icons.location_on,
+                        onChanged: (val) => context
+                            .read<EditProfileBloc>()
+                            .add(UpdateLocation(val)),
                       ),
-                      Padding(
-                        padding: const EdgeInsets.only(bottom: 12),
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            const Text(
-                              "Date of Birth",
-                              style: TextStyle(
-                                fontSize: 14,
-                                fontWeight: FontWeight.w600,
-                              ),
-                            ),
-                            const SizedBox(height: 6),
-                            TextFormField(
-                              controller: dobController,
-                              readOnly: true,
-                              onTap: () => _selectDate(context),
-                              decoration: InputDecoration(
-                                prefixIcon: const Icon(Icons.cake),
-                                hintText: "Select your DOB",
-                                border: OutlineInputBorder(
-                                  borderRadius: BorderRadius.circular(10),
-                                ),
-                              ),
-                            ),
-                          ],
+
+                      const SizedBox(height: 12),
+                      const Text("Date of Birth",
+                          style: TextStyle(fontWeight: FontWeight.w600)),
+                      const SizedBox(height: 6),
+
+                      TextFormField(
+                        controller: dobController,
+                        readOnly: true,
+                        onTap: () => _selectDate(context),
+                        decoration: InputDecoration(
+                          prefixIcon: const Icon(Icons.cake),
+                          border: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(10),
+                          ),
                         ),
                       ),
-              
+
                       const SizedBox(height: 20),
-              
-                      ///  SHOPPING PREFERENCES
-                      SectionTitle(text: "Shopping Preferences"),
+
+                      const SectionTitle(text: "Shopping Preferences"),
+
                       DropdownField(
                         value: state.gender,
                         label: "Gender",
                         hint: "Select Gender",
-                        items: ["Male", "Female", "Other"],
+                        items: const ["Male", "Female", "Other"],
                         icon: Icons.person_outline,
-                        onChanged: (val) =>
-                            context.read<EditProfileCubit>().changeGender(val),
+                        onChanged: (val) => context
+                            .read<EditProfileBloc>()
+                            .add(UpdateGender(val!)),
                       ),
+
                       DropdownField(
-                        label: "Size",
                         value: state.size,
+                        label: "Size",
                         hint: "Shoe Size (UK)",
-                        items: ["4", "5", "6", "7", "8", "9", "10", "11", "12"],
+                        items: const [
+                          "4","5","6","7","8","9","10","11","12"
+                        ],
                         icon: Icons.straighten,
-                        onChanged: (val) =>
-                            context.read<EditProfileCubit>().changeSize(val),
+                        onChanged: (val) => context
+                            .read<EditProfileBloc>()
+                            .add(UpdateSize(val!)),
                       ),
+
                       ProfileTextField(
                         controller: brandController,
-                        label: "preffered Brand",
-                        hint: "Preferred Brand (Optional)",
+                        label: "Preferred Brand",
+                        hint: "Preferred Brand",
                         icon: Icons.shopping_bag,
+                        onChanged: (val) => context
+                            .read<EditProfileBloc>()
+                            .add(UpdateBrand(val)),
                       ),
-              
+
                       const SizedBox(height: 30),
-              
-                      ///  SAVE BUTTON
+
                       SizedBox(
                         width: double.infinity,
                         child: ElevatedButton(
-                          style: ElevatedButton.styleFrom(
-                            padding: const EdgeInsets.symmetric(vertical: 14),
-                          ),
-                          onPressed: () {},
-                          child: const Text("Save Changes"),
+                          onPressed: state.isSaving
+                              ? null
+                              : () {
+                                  context
+                                      .read<EditProfileBloc>()
+                                      .add(SaveProfile());
+                                },
+                          child: state.isSaving
+                              ? const SizedBox(
+                                  height: 18,
+                                  width: 18,
+                                  child: CircularProgressIndicator(
+                                    strokeWidth: 2,
+                                    color: Colors.white,
+                                  ),
+                                )
+                              : const Text("Save Changes"),
                         ),
                       ),
                     ],
