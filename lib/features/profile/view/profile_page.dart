@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:footware_app/features/common/app_colors.dart';
 import 'package:footware_app/features/common/routes.dart';
 import 'package:footware_app/features/profile/cubit/dark_mode_cubit.dart';
 import 'package:footware_app/features/profile/cubit/profile_cubit.dart';
@@ -32,7 +33,7 @@ class _ProfilePageState extends State<ProfilePage> {
       ScaffoldMessenger.of(context).showSnackBar(
         const SnackBar(
           content: Text("Logged out successfully"),
-          backgroundColor: Colors.black,
+          backgroundColor: AppColors.primaryBlack,
           duration: Duration(seconds: 2),
         ),
       );
@@ -43,7 +44,7 @@ class _ProfilePageState extends State<ProfilePage> {
     ScaffoldMessenger.of(context).showSnackBar(
       SnackBar(
         content: Text(state.message),
-        backgroundColor: Colors.red,
+        backgroundColor:AppColors.primaryRed,
       ),
     );
   }
@@ -73,7 +74,7 @@ class _ProfilePageState extends State<ProfilePage> {
 
                   const SizedBox(height: 20),
 
-                  /// Profile Image
+                  //Profile Image
                   Stack(
                     children: const [
                       CircleAvatar(
@@ -136,7 +137,7 @@ class _ProfilePageState extends State<ProfilePage> {
                           "Language",
                           trailing: const Text(
                             "English (US)",
-                            style: TextStyle(color: Colors.grey),
+                            style: TextStyle(color: AppColors.darkGrey),
                           ),
                         ),
                         buildTile(
@@ -157,13 +158,13 @@ class _ProfilePageState extends State<ProfilePage> {
 
                         const SizedBox(height: 10),
 
-                        /// Logout (UPDATED ONLY HERE)
+                        //Logout 
                         ListTile(
                           leading:
-                              const Icon(Icons.logout, color: Colors.red),
+                              const Icon(Icons.logout, color: AppColors.darkGrey),
                           title: const Text(
                             "Logout",
-                            style: TextStyle(color: Colors.red),
+                            style: TextStyle(color: AppColors.primaryRed,),
                           ),
                           onTap: () {
                             _showLogoutDialog(context);
@@ -238,7 +239,7 @@ class _ProfilePageState extends State<ProfilePage> {
                 const Text(
                   "Do you really want to logout\nfrom this account?",
                   textAlign: TextAlign.center,
-                  style: TextStyle(color: Colors.black54),
+                  style: TextStyle(color: AppColors.primaryBlack),
                 ),
 
                 const SizedBox(height: 20),
@@ -263,13 +264,13 @@ class _ProfilePageState extends State<ProfilePage> {
 
                     const SizedBox(width: 12),
 
-                    /// Confirm
+                    //Confirm
                     Expanded(
                       child: BlocBuilder<ProfileCubit, ProfileState>(
                         builder: (context, state) {
                           return ElevatedButton(
                             style: ElevatedButton.styleFrom(
-                              backgroundColor: Colors.black,
+                              backgroundColor: AppColors.primaryBlack,
                               shape: RoundedRectangleBorder(
                                 borderRadius: BorderRadius.circular(24),
                               ),
@@ -286,7 +287,7 @@ class _ProfilePageState extends State<ProfilePage> {
                                     width: 18,
                                     child: CircularProgressIndicator(
                                       strokeWidth: 2,
-                                      color: Colors.white,
+                                      color: AppColors.primaryWhite,
                                     ),
                                   )
                                 : const Text("Confirm"),
@@ -303,5 +304,5 @@ class _ProfilePageState extends State<ProfilePage> {
       },
     );
   }
-
+  
 }
