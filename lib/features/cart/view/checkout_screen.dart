@@ -212,9 +212,9 @@ class CheckoutPage extends StatelessWidget {
                     width: double.infinity,
                     child: ElevatedButton(
                       onPressed: () {
-                        //  Navigator.of(
-                        //     context,
-                        //   ).pushNamed(Routes.addressSelectionPage);
+                         Navigator.of(
+                            context,
+                          ).pushNamed(Routes.payment);
                       },
                       style: ElevatedButton.styleFrom(
                         backgroundColor: Colors.black,

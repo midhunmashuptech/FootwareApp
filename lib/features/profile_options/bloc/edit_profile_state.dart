@@ -11,7 +11,8 @@ class EditProfileState {
   final String? brand;
   final File? profileImage;
   final bool isLoading;
-  final bool isSaving;
+  final bool isSaving;final String? successMessage;
+
 
   const EditProfileState({
     this.name,
@@ -24,7 +25,9 @@ class EditProfileState {
     this.brand,
     this.profileImage,
     this.isLoading = false,
-    this.isSaving = false,
+    this.isSaving = false, 
+    this.successMessage,
+
   });
 
   EditProfileState copyWith({
@@ -39,6 +42,8 @@ class EditProfileState {
     File? profileImage,
     bool? isLoading,
     bool? isSaving,
+     String? successMessage,
+
   }) {
     return EditProfileState(
       name: name ?? this.name,
@@ -52,6 +57,7 @@ class EditProfileState {
       profileImage: profileImage ?? this.profileImage,
       isLoading: isLoading ?? this.isLoading,
       isSaving: isSaving ?? this.isSaving,
+       successMessage: successMessage,
     );
   }
 
