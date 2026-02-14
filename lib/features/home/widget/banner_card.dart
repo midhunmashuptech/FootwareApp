@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:footware_app/features/common/app_colors.dart';
 import 'package:footware_app/features/home/model/banner_item.dart';
 
 class BannerCard extends StatelessWidget {
@@ -31,7 +32,7 @@ class BannerCard extends StatelessWidget {
                       style: const TextStyle(
                         fontSize: 40,
                         fontWeight: FontWeight.bold,
-                        color: Colors.white,
+                        color: AppColors.primaryWhite,
                       ),
                     ),
                     const SizedBox(height: 4),
@@ -40,7 +41,7 @@ class BannerCard extends StatelessWidget {
                       style: const TextStyle(
                         fontSize: 18,
                         fontWeight: FontWeight.w600,
-                        color: Colors.white,
+                        color: AppColors.primaryWhite,
                       ),
                     ),
                     const SizedBox(height: 8),

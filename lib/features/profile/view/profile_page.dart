@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:footware_app/features/common/app_colors.dart';
 import 'package:footware_app/features/common/routes.dart';
 import 'package:footware_app/features/profile/cubit/dark_mode_cubit.dart';
 import 'package:footware_app/features/profile/cubit/profile_cubit.dart';
 import 'package:footware_app/features/profile/cubit/profile_state.dart';
+import 'package:footware_app/features/profile/widget/help_and_support_bottom_sheet.dart';
 
 class ProfilePage extends StatefulWidget {
   const ProfilePage({super.key});
@@ -19,35 +21,35 @@ class _ProfilePageState extends State<ProfilePage> {
   Widget build(BuildContext context) {
     return BlocListener<ProfileCubit, ProfileState>(
       listener: (context, state) {
-  if (state is ProfileLogoutSuccess) {
-    /// Navigate first
-    Navigator.pushNamedAndRemoveUntil(
-      context,
-      Routes.bottomNavigation,
-      (route) => false,
-    );
+        if (state is ProfileLogoutSuccess) {
+          /// Navigate first
+          Navigator.pushNamedAndRemoveUntil(
+            context,
+            Routes.bottomNavigation,
+            (route) => false,
+          );
 
-    //Snackbar after navigation
-    WidgetsBinding.instance.addPostFrameCallback((_) {
-      ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(
-          content: Text("Logged out successfully"),
-          backgroundColor: Colors.black,
-          duration: Duration(seconds: 2),
-        ),
-      );
-    });
-  }
+          //Snackbar after navigation
+          WidgetsBinding.instance.addPostFrameCallback((_) {
+            ScaffoldMessenger.of(context).showSnackBar(
+              const SnackBar(
+                content: Text("Logged out successfully"),
+                backgroundColor: AppColors.primaryBlack,
+                duration: Duration(seconds: 2),
+              ),
+            );
+          });
+        }
 
-  if (state is ProfileLogoutFailure) {
-    ScaffoldMessenger.of(context).showSnackBar(
-      SnackBar(
-        content: Text(state.message),
-        backgroundColor: Colors.red,
-      ),
-    );
-  }
-},
+        if (state is ProfileLogoutFailure) {
+          ScaffoldMessenger.of(context).showSnackBar(
+            SnackBar(
+              content: Text(state.message),
+              backgroundColor: AppColors.primaryRed,
+            ),
+          );
+        }
+      },
 
       child: BlocBuilder<DarkModeCubit, bool>(
         builder: (context, isDarkMode) {
@@ -73,7 +75,7 @@ class _ProfilePageState extends State<ProfilePage> {
 
                   const SizedBox(height: 20),
 
-                  /// Profile Image
+                  //Profile Image
                   Stack(
                     children: const [
                       CircleAvatar(
@@ -111,24 +113,26 @@ class _ProfilePageState extends State<ProfilePage> {
                           Icons.person_outline,
                           "Edit Profile",
                           onTap: () {
-                            Navigator.of(context)
-                                .pushNamed(Routes.editProfile);
+                            Navigator.of(context).pushNamed(Routes.editProfile);
                           },
                         ),
                         buildTile(
                           Icons.location_on_outlined,
                           "Address",
                           onTap: () {
-                            Navigator.of(context)
-                                .pushNamed(Routes.savedAddress);
+                            Navigator.of(
+                              context,
+                            ).pushNamed(Routes.savedAddress);
                           },
                         ),
                         buildTile(
                           Icons.notifications_none,
                           "Notification",
                           onTap: () {
-                            Navigator.of(context, rootNavigator: true)
-                                .pushNamed(Routes.notifications);
+                            Navigator.of(
+                              context,
+                              rootNavigator: true,
+                            ).pushNamed(Routes.notifications);
                           },
                         ),
                         buildTile(
@@ -136,7 +140,7 @@ class _ProfilePageState extends State<ProfilePage> {
                           "Language",
                           trailing: const Text(
                             "English (US)",
-                            style: TextStyle(color: Colors.grey),
+                            style: TextStyle(color: AppColors.darkGrey),
                           ),
                         ),
                         buildTile(
@@ -149,21 +153,35 @@ class _ProfilePageState extends State<ProfilePage> {
                           "Privacy Policy",
                           onTap: () {
                             Navigator.pushNamed(
-                                context, Routes.privacyAndPolicy);
+                              context,
+                              Routes.privacyAndPolicy,
+                            );
                           },
                         ),
                         buildTile(
-                            Icons.headphones_outlined, "Help & Support"),
+                          Icons.headphones_outlined,
+                          "Help & Support",
+                          onTap: () {
+                            showModalBottomSheet(
+                              context: context,
+                              isScrollControlled: true,
+                              backgroundColor: Colors.transparent,
+                              builder: (_) => const HelpAndSupportBottomSheet(),
+                            );
+                          },
+                        ),
 
                         const SizedBox(height: 10),
 
-                        /// Logout (UPDATED ONLY HERE)
+                        //Logout
                         ListTile(
-                          leading:
-                              const Icon(Icons.logout, color: Colors.red),
+                          leading: const Icon(
+                            Icons.logout,
+                            color: AppColors.primaryRed,
+                          ),
                           title: const Text(
                             "Logout",
-                            style: TextStyle(color: Colors.red),
+                            style: TextStyle(color: AppColors.primaryRed),
                           ),
                           onTap: () {
                             _showLogoutDialog(context);
@@ -203,8 +221,7 @@ class _ProfilePageState extends State<ProfilePage> {
                       context.read<DarkModeCubit>().toggleDarkMode(val);
                     },
                   )
-                : trailing ??
-                    const Icon(Icons.arrow_forward_ios, size: 16),
+                : trailing ?? const Icon(Icons.arrow_forward_ios, size: 16),
             onTap: isSwitch ? null : onTap,
           ),
         );
@@ -212,14 +229,15 @@ class _ProfilePageState extends State<ProfilePage> {
     );
   }
 
-   void _showLogoutDialog(BuildContext context) {
+  void _showLogoutDialog(BuildContext context) {
     showDialog(
       context: context,
       barrierDismissible: false,
       builder: (_) {
         return Dialog(
-          shape:
-              RoundedRectangleBorder(borderRadius: BorderRadius.circular(24)),
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(24),
+          ),
           child: Padding(
             padding: const EdgeInsets.all(20),
             child: Column(
@@ -227,10 +245,7 @@ class _ProfilePageState extends State<ProfilePage> {
               children: [
                 const Text(
                   "Are you sure?",
-                  style: TextStyle(
-                    fontSize: 18,
-                    fontWeight: FontWeight.bold,
-                  ),
+                  style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
                 ),
 
                 const SizedBox(height: 12),
@@ -238,7 +253,7 @@ class _ProfilePageState extends State<ProfilePage> {
                 const Text(
                   "Do you really want to logout\nfrom this account?",
                   textAlign: TextAlign.center,
-                  style: TextStyle(color: Colors.black54),
+                  style: TextStyle(color: AppColors.primaryBlack),
                 ),
 
                 const SizedBox(height: 20),
@@ -263,13 +278,13 @@ class _ProfilePageState extends State<ProfilePage> {
 
                     const SizedBox(width: 12),
 
-                    /// Confirm
+                    //Confirm
                     Expanded(
                       child: BlocBuilder<ProfileCubit, ProfileState>(
                         builder: (context, state) {
                           return ElevatedButton(
                             style: ElevatedButton.styleFrom(
-                              backgroundColor: Colors.black,
+                              backgroundColor: AppColors.primaryBlack,
                               shape: RoundedRectangleBorder(
                                 borderRadius: BorderRadius.circular(24),
                               ),
@@ -286,7 +301,7 @@ class _ProfilePageState extends State<ProfilePage> {
                                     width: 18,
                                     child: CircularProgressIndicator(
                                       strokeWidth: 2,
-                                      color: Colors.white,
+                                      color: AppColors.primaryWhite,
                                     ),
                                   )
                                 : const Text("Confirm"),
@@ -303,5 +318,4 @@ class _ProfilePageState extends State<ProfilePage> {
       },
     );
   }
-
 }
