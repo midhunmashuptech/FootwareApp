@@ -33,7 +33,6 @@ class SpecialOffers extends StatelessWidget {
                     /// Banner card
                     Expanded(
                       child: ListView.separated(
-                        padding: const EdgeInsets.symmetric(horizontal: 16),
                         itemCount: state.bannerItems.length,
                         separatorBuilder: (context, index) =>
                             const SizedBox(height: 10),
