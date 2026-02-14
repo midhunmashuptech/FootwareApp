@@ -6,12 +6,13 @@ class AppColors {
   static const Color primaryBlack = Color(0xFF000000);
   static const Color primaryWhite = Color(0xFFF3F3F3);
   static const Color secondaryGrey = Color(0xFFEDEDED);
-  static const Color secondaryLightGrey = Color(0xFFF3F3F3);
   static const Color lightBlue = Colors.blue;
 
   //Grey
   static const Color grey = Color.fromRGBO(245, 245, 245, 1);
   static const Color darkGrey = Colors.grey;
+  static const Color lightGrey = Color(0xFFD9D9D9);
+  static const Color secondaryLightGrey = Color(0xFFF3F3F3);
 
   //Green
   static const Color lightGreen = Color(0xFFE6FFDA);
