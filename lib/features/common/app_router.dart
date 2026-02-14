@@ -9,6 +9,7 @@ import 'package:footware_app/features/home/view/special_offers.dart';
 import 'package:footware_app/features/orders/model/order_model.dart';
 import 'package:footware_app/features/orders/view/orders_page.dart';
 import 'package:footware_app/features/orders/view/track_order.dart';
+import 'package:footware_app/features/payment/view/payment_screen.dart';
 import 'package:footware_app/features/products_details/view/product_details_screen.dart';
 import 'package:footware_app/features/profile/view/notifications.dart';
 import 'package:footware_app/features/profile/view/privacy_and_policy.dart';
@@ -83,6 +84,9 @@ class AppRouter {
 
       case Routes.specialOffers:
         return MaterialPageRoute(builder: (_) => SpecialOffers());
+
+      case Routes.payment:
+        return MaterialPageRoute(builder: (_) => PaymentMethodsScreen());  
       default:
         return MaterialPageRoute(
           builder: (_) => Scaffold(body: Text("Route not found!")),

@@ -93,11 +93,11 @@ class _EditProfilePageState extends State<EditProfilePage> {
           dobController.text = state.dob ?? "";
           brandController.text = state.brand ?? "";
 
-          // if (!state.isSaving && state.successMessage != null) {
-          //   ScaffoldMessenger.of(context).showSnackBar(
-          //     SnackBar(content: Text(state.successMessage!)),
-          //   );
-          // }
+          if (!state.isSaving && state.successMessage != null) {
+            ScaffoldMessenger.of(context).showSnackBar(
+              SnackBar(content: Text(state.successMessage!)),
+            );
+          }
         },
         child: BlocBuilder<EditProfileBloc, EditProfileState>(
           builder: (context, state) {

@@ -69,6 +69,9 @@ class EditProfileBloc extends Bloc<EditProfileEvent, EditProfileState> {
 
     await Future.delayed(const Duration(seconds: 2)); // simulate save
 
-    emit(state.copyWith(isSaving: false));
+    emit(state.copyWith(
+      isSaving: false,
+       successMessage: "Profile Updated Successfully",
+      ));
   }
 }
