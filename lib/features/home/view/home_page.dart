@@ -26,8 +26,8 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: SingleChildScrollView(
-        child: SafeArea(
+      body: SafeArea(
+        child: SingleChildScrollView(
           child: Column(
             children: [
               SizedBox(height: 15),
@@ -45,9 +45,9 @@ class _HomePageState extends State<HomePage> {
                         'https://upload.wikimedia.org/wikipedia/en/8/8b/ST3_Steve_Harrington_portrait.jpg',
                       ),
                     ),
-
+          
                     const SizedBox(width: 12),
-
+          
                     // Greeting Text
                     Expanded(
                       child: Column(
@@ -68,7 +68,7 @@ class _HomePageState extends State<HomePage> {
                         ],
                       ),
                     ),
-
+          
                     // Icons
                     Row(
                       children: [
@@ -92,7 +92,7 @@ class _HomePageState extends State<HomePage> {
                   ],
                 ),
               ),
-
+          
               BlocBuilder<HomeBloc, HomeState>(
                 builder: (context, state) {
                   if (state is HomeLoading) {
@@ -155,9 +155,9 @@ class _HomePageState extends State<HomePage> {
                                   },
                                 ),
                               ),
-
+          
                               const SizedBox(height: 10),
-
+          
                               // Dots Indicator
                               Row(
                                 mainAxisAlignment: MainAxisAlignment.center,
@@ -179,9 +179,9 @@ class _HomePageState extends State<HomePage> {
                                   ),
                                 ),
                               ),
-
+          
                               const SizedBox(height: 20),
-
+          
                               // Category Cards
                               SizedBox(
                                 height: 100,
@@ -195,7 +195,7 @@ class _HomePageState extends State<HomePage> {
                                       const SizedBox(width: 20),
                                   itemBuilder: (context, index) {
                                     final item = state.categories[index];
-
+          
                                     return GestureDetector(
                                       onTap: () {
                                         Navigator.pushNamed(
@@ -236,7 +236,7 @@ class _HomePageState extends State<HomePage> {
                             ],
                           );
                   }
-
+          
                   return SizedBox.shrink();
                 },
               ),
@@ -274,7 +274,7 @@ class _HomePageState extends State<HomePage> {
                       ),
                     );
                   }
-
+          
                   if (state is HomeLoaded) {
                     return GridView.builder(
                       shrinkWrap: true,
@@ -303,7 +303,7 @@ class _HomePageState extends State<HomePage> {
                       },
                     );
                   }
-
+          
                   return SizedBox.shrink();
                 },
               ),
